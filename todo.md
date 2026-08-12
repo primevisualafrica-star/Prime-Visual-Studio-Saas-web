@@ -82,6 +82,6 @@
 
 ## GitHub delivery
 
-- [ ] Verify access to `Prime-Visual-Studio-Saas-web` and inspect its current default branch.
-- [ ] Commit the latest project code and push it to the target repository.
-- [ ] Confirm the pushed branch and commit on GitHub.
+- [x] Verify access to `Prime-Visual-Studio-Saas-web` and inspect its current default branch.
+- [x] Commit the latest project code and push it to the target repository.
+- [x] Confirm the pushed branch and commit on GitHub.
