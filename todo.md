@@ -79,3 +79,9 @@
 - [x] Rendre le défilement vertical mobile naturel, visible et non bloqué par le layout ou les conteneurs horizontaux.
 - [x] Vérifier le rendu mobile et desktop puis enregistrer un checkpoint après correction.
 - [x] Maintenir le bouton « Commencer » visible et utilisable sur mobile sans masquer le logo.
+
+## GitHub delivery
+
+- [ ] Verify access to `Prime-Visual-Studio-Saas-web` and inspect its current default branch.
+- [ ] Commit the latest project code and push it to the target repository.
+- [ ] Confirm the pushed branch and commit on GitHub.
