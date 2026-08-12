@@ -57,3 +57,18 @@
 - [x] Replace placeholder creation review behavior with a meaningful detail/review interaction.
 - [x] Replace prompt-based admin template editing with a validated form covering template fields. (Field-by-field French collection is implemented; a modal form remains a future UX refinement.)
 - [x] Add database-backed credit success/failure integration coverage where the test environment permits. (Deterministic credit-guard coverage added; production DB integration remains environment-dependent.)
+
+## Optimisation mobile et identité visuelle
+
+- [x] Détourer le logo fourni en supprimant son arrière-plan sombre tout en conservant le symbole et le lettrage dorés.
+- [x] Intégrer le logo détouré dans le header public.
+- [x] Optimiser le header et le hero pour mobile avec logo visible, espacement vertical légèrement abaissé et défilement naturel.
+- [x] Vérifier le rendu responsive sur mobile et desktop puis enregistrer un checkpoint.
+
+## Vérification responsive finale
+
+- [x] Ajuster explicitement la typographie, la hauteur et les espacements du hero sur mobile.
+- [x] Capturer une vérification desktop après les changements du header et du logo.
+- [x] Enregistrer un nouveau checkpoint après la validation responsive finale.
+
+- [ ] Enregistrer le checkpoint final après les ajustements du header, du logo et du hero mobile, avec validation desktop/mobile.
