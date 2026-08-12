@@ -125,5 +125,11 @@
 - [x] Afficher toute la composition du logo principal, y compris la ligne secondaire, sans rognage vertical sur desktop.
 - [x] Revalider le logo principal complet sur mobile et desktop puis enregistrer le checkpoint final.
 
-- [ ] Enregistrer un nouveau checkpoint après le remplacement final du logo principal dans le header.
-- [ ] Vérifier que le logo principal complet et le bouton « Commencer » restent visibles sur mobile et desktop dans le checkpoint final.
+- [x] Enregistrer un nouveau checkpoint après le remplacement final du logo principal dans le header.
+- [x] Vérifier que le logo principal complet et le bouton « Commencer » restent visibles sur mobile et desktop dans le checkpoint final.
+
+## GitHub sync for latest header
+
+- [ ] Inspect local changes and confirm the GitHub remote for `Prime-Visual-Studio-Saas-web`.
+- [ ] Commit and push the latest logo and header updates to `origin/main`.
+- [ ] Verify the remote branch and commit after pushing.
