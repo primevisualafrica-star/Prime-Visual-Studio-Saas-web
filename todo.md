@@ -85,3 +85,12 @@
 - [x] Verify access to `Prime-Visual-Studio-Saas-web` and inspect its current default branch.
 - [x] Commit the latest project code and push it to the target repository.
 - [x] Confirm the pushed branch and commit on GitHub.
+
+## Nouveau bug mobile : header
+
+- [x] Corriger la structure responsive du header afin que le logo et le bouton « Commencer » soient visibles simultanément sur les petits écrans.
+- [x] Tester explicitement le header à 320 px, 360 px et 390 px.
+- [x] Synchroniser la correction vers GitHub et enregistrer un checkpoint.
+
+- [ ] Enregistrer un nouveau checkpoint après la correction finale du header mobile.
+- [ ] Pousser la dernière correction du header mobile vers GitHub après validation.
