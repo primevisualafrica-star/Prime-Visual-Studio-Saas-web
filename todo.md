@@ -92,5 +92,14 @@
 - [x] Tester explicitement le header à 320 px, 360 px et 390 px.
 - [x] Synchroniser la correction vers GitHub et enregistrer un checkpoint.
 
-- [ ] Enregistrer un nouveau checkpoint après la correction finale du header mobile.
-- [ ] Pousser la dernière correction du header mobile vers GitHub après validation.
+- [x] Enregistrer un nouveau checkpoint après la correction finale du header mobile.
+- [x] Pousser la dernière correction du header mobile vers GitHub après validation. (Le dépôt était déjà synchronisé avec `origin/main` après le checkpoint.)
+
+## Fond blanc du logo
+
+- [x] Afficher le logo sur un fond blanc opaque dans le header mobile et desktop.
+- [x] Vérifier que le logo blanc reste visible avec « Commencer » et le défilement mobile.
+- [x] Enregistrer le checkpoint mis à jour.
+
+- [x] Vérifier explicitement en mobile que le header avec fond blanc conserve un défilement vertical complet et que le logo + « Commencer » restent visibles.
+- [x] Enregistrer un nouveau checkpoint après la modification du logo sur fond blanc.
