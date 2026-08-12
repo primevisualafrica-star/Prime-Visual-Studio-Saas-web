@@ -133,3 +133,34 @@
 - [x] Inspect local changes and confirm the GitHub remote for `Prime-Visual-Studio-Saas-web`.
 - [x] Commit and push the latest logo and header updates to the verified GitHub remote `github/main` for `Prime-Visual-Studio-Saas-web`.
 - [x] Verify the remote branch and commit after pushing.
+
+## Supabase connection request
+
+- [ ] Connect the existing site to the user’s existing Supabase project without enabling Manus Cloud or creating a new backend.
+- [ ] Configure only the minimum Supabase credentials required for the selected integration path.
+- [ ] Validate the Supabase connection and document any required schema or migration steps.
+
+## Schéma Supabase à définir
+
+- [ ] Comparer les tables actuelles de l’application avec les entités Supabase nécessaires.
+- [ ] Définir les relations, index et politiques RLS minimales pour Database, Auth et Storage.
+- [ ] Fournir à l’utilisateur une liste exacte des tables à créer et distinguer les tables obligatoires des tables optionnelles.
+
+## Politiques RLS et rôles Supabase
+
+- [ ] Définir les rôles applicatifs `user` et `admin` et leur source de vérité.
+- [ ] Définir les politiques RLS pour `profiles`, `subscriptions`, `templates`, `generations`, `usage` et `generation_assets`.
+- [ ] Définir les politiques Storage pour `product-images` et `generated-images`.
+- [ ] Fournir le SQL prêt à exécuter et les précautions de sécurité associées.
+
+## Migration Supabase complète
+
+- [x] Préparer un script SQL idempotent pour les tables, enums, relations et index Supabase.
+- [x] Ajouter les fonctions de rôle et les politiques RLS pour Database et Storage.
+- [x] Fournir le script complet avec les avertissements sur les buckets, le premier admin et les opérations serveur.
+
+## Visibilité du pied de page
+
+- [x] Rendre le pied de page de la landing page visible et accessible sur desktop et mobile.
+- [x] Vérifier le rendu du pied de page sur les vues desktop et mobile.
+- [x] Ajouter ou mettre à jour un test Vitest couvrant la structure du pied de page.
