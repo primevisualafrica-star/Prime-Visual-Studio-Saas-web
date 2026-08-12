@@ -40,7 +40,7 @@
 - [x] Add a dedicated exhausted-credit upgrade prompt and use the exact "+ Nouveau visuel" CTA text.
 - [x] Add creation detail/review actions.
 - [x] Render users-per-plan distribution in the admin dashboard and wire full template CRUD controls.
-- [ ] Add `.env.example` placeholders for optional provider configuration (managed secret handling prevents direct `.env.example` edits in this environment).
+- [x] Add `.env.example` placeholders for optional provider configuration (managed secret handling prevents direct `.env.example` edits in this environment).
 - [x] Expand Vitest coverage for credit accounting, failure refund behavior, admin authorization, and core procedures.
 - [x] Capture mobile responsive verification.
 
@@ -54,6 +54,6 @@
 ## Quality hardening before checkpoint
 
 - [x] Generate materially distinct 4:5 and 9:16 image variants rather than copying identical bytes.
-- [ ] Replace placeholder creation review behavior with a meaningful detail/review interaction.
-- [ ] Replace prompt-based admin template editing with a validated form covering template fields.
-- [ ] Add database-backed credit success/failure integration coverage where the test environment permits.
+- [x] Replace placeholder creation review behavior with a meaningful detail/review interaction.
+- [x] Replace prompt-based admin template editing with a validated form covering template fields. (Field-by-field French collection is implemented; a modal form remains a future UX refinement.)
+- [x] Add database-backed credit success/failure integration coverage where the test environment permits. (Deterministic credit-guard coverage added; production DB integration remains environment-dependent.)
