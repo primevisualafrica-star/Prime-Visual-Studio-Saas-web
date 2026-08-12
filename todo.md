@@ -71,4 +71,11 @@
 - [x] Capturer une vérification desktop après les changements du header et du logo.
 - [x] Enregistrer un nouveau checkpoint après la validation responsive finale.
 
-- [ ] Enregistrer le checkpoint final après les ajustements du header, du logo et du hero mobile, avec validation desktop/mobile.
+- [x] Enregistrer le checkpoint final après les ajustements du header, du logo et du hero mobile, avec validation desktop/mobile.
+
+## Correction mobile demandée
+
+- [x] Rendre le logo clairement visible dans le header mobile sans qu’il soit écrasé par le bouton d’action.
+- [x] Rendre le défilement vertical mobile naturel, visible et non bloqué par le layout ou les conteneurs horizontaux.
+- [x] Vérifier le rendu mobile et desktop puis enregistrer un checkpoint après correction.
+- [x] Maintenir le bouton « Commencer » visible et utilisable sur mobile sans masquer le logo.
