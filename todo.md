@@ -112,3 +112,18 @@
 
 - [x] Fit the full mobile logo inside the white container without relying on cropped overflow, then re-verify it with “Commencer”.
 - [x] Save a new checkpoint after the final header visibility adjustment.
+
+## Remplacement du logo principal
+
+- [x] Remplacer l’ancien logo du header par le logo principal Prime Visual Africa.
+- [x] Conserver le fond blanc opaque et la visibilité du bouton « Commencer » sur mobile.
+- [x] Vérifier le nouveau logo sur mobile et desktop puis enregistrer un checkpoint.
+
+- [x] Ajuster la largeur desktop du logo principal afin qu’il soit entièrement visible sans rognage dans le header.
+- [x] Revalider le logo principal sur mobile et desktop, puis enregistrer le checkpoint final.
+
+- [x] Afficher toute la composition du logo principal, y compris la ligne secondaire, sans rognage vertical sur desktop.
+- [x] Revalider le logo principal complet sur mobile et desktop puis enregistrer le checkpoint final.
+
+- [ ] Enregistrer un nouveau checkpoint après le remplacement final du logo principal dans le header.
+- [ ] Vérifier que le logo principal complet et le bouton « Commencer » restent visibles sur mobile et desktop dans le checkpoint final.
