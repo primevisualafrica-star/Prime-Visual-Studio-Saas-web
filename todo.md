@@ -103,3 +103,12 @@
 
 - [x] Vérifier explicitement en mobile que le header avec fond blanc conserve un défilement vertical complet et que le logo + « Commencer » restent visibles.
 - [x] Enregistrer un nouveau checkpoint après la modification du logo sur fond blanc.
+
+## Header visibility update
+
+- [x] Keep the logo on an opaque white background in the header.
+- [x] Ensure the complete logo and “Commencer” button are fully visible together on mobile.
+- [x] Verify the header at phone and desktop widths and save a new checkpoint.
+
+- [x] Fit the full mobile logo inside the white container without relying on cropped overflow, then re-verify it with “Commencer”.
+- [x] Save a new checkpoint after the final header visibility adjustment.
