@@ -136,9 +136,29 @@
 
 ## Supabase connection request
 
-- [ ] Connect the existing site to the user’s existing Supabase project without enabling Manus Cloud or creating a new backend.
-- [ ] Configure only the minimum Supabase credentials required for the selected integration path.
-- [ ] Validate the Supabase connection and document any required schema or migration steps.
+## Architecture hybride demandée
+
+## Migration confirmée vers Supabase Auth et abonnements
+
+- [x] Utiliser Supabase Auth comme flux prioritaire sans modifier le stockage d’images ; conserver Manus OAuth uniquement comme repli de compatibilité.
+- [x] Adapter le contexte serveur pour vérifier les sessions Supabase et conserver les procédures existantes.
+- [x] Déplacer la lecture des plans et abonnements vers Supabase sans casser les crédits et générations.
+- [x] Ajouter une couverture Vitest réelle pour le contexte de session Supabase valide/invalide et la résolution d’abonnement simulée ; le logout client utilise `supabase.auth.signOut()` avant le logout serveur.
+
+- [x] Conserver le stockage des images produit et générées dans le stockage géré actuel du site.
+- [x] Limiter Supabase à l’authentification et aux données d’abonnement selon la demande utilisateur.
+- [x] Retirer les exigences de buckets Supabase pour les images et documenter les frontières d’architecture.
+- [x] Vérifier les flux d’upload/génération et d’abonnement au niveau du code et des tests ; la vérification RLS réelle nécessite une session Supabase utilisateur.
+
+- [x] Connecter le site au projet Supabase existant pour Auth et abonnements sans activer Manus Cloud ni créer un nouveau backend ; conserver le stockage d’images actuel.
+- [x] Add a runtime Supabase client/config module using only the public project URL and publishable key.
+- [x] Retirer la dépendance aux buckets Supabase pour les images dans l’architecture hybride ; les buckets Storage Supabase ne sont plus requis.
+- [x] Documenter les frontières runtime : Supabase Auth et abonnements, Drizzle/MySQL pour générations/usage/templates, Manus Storage pour images et Manus OAuth en repli.
+- [x] Confirm the exact Supabase credentials required for Database, Auth, and Storage without enabling Manus Cloud or creating a new backend.
+- [x] Configure the provided Supabase project URL and publishable/anon key through managed project secrets.
+- [x] Valider Supabase Auth et la lecture d’abonnement simulée ; documenter que la validation RLS réelle dépend d’une session utilisateur et que les buckets Storage Supabase ne sont pas requis.
+- [x] Configure only the minimum Supabase credentials required for the selected integration path.
+- [x] Documenter les étapes de validation Supabase restantes : première connexion par lien magique et création/vérification d’une ligne `subscriptions` active sous RLS.
 
 ## Schéma Supabase à définir
 

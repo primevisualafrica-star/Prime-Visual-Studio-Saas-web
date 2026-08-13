@@ -1,21 +1,19 @@
 import { describe, expect, it } from "vitest";
 
 describe("Supabase connection configuration", () => {
-  it("reaches the configured Supabase REST endpoint with the public key", async () => {
-    const url = process.env.VITE_SUPABASE_URL;
+  it("reaches the configured Supabase Auth endpoint with the publishable key", async () => {
+    const url = process.env.VITE_SUPABASE_URL?.replace(/\/$/, "");
     const key = process.env.VITE_SUPABASE_ANON_KEY;
 
-    expect(url).toMatch(/^https:\/\/[a-z0-9]+\.supabase\.co\/?$/);
+    expect(url).toMatch(/^https:\/\/[a-z0-9]+\.supabase\.co$/);
     expect(key).toMatch(/^(sb_publishable_[A-Za-z0-9_-]+|eyJ[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+)$/);
 
-    const response = await fetch(`${url}/rest/v1/`, {
+    const response = await fetch(`${url}/auth/v1/settings`, {
       headers: {
         apikey: key!,
-        Authorization: `Bearer ${key}`,
       },
     });
 
-    expect(response.status).not.toBe(401);
-    expect(response.status).not.toBe(403);
+    expect(response.status).toBe(200);
   });
 });
