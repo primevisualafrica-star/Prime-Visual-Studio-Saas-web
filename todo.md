@@ -160,18 +160,24 @@
 - [x] Configure only the minimum Supabase credentials required for the selected integration path.
 - [x] Documenter les étapes de validation Supabase restantes : première connexion par lien magique et création/vérification d’une ligne `subscriptions` active sous RLS.
 
+## Compléments de documentation Supabase
+
+- [x] Créer une note de mapping Drizzle/MySQL vers les entités Supabase, table par table.
+- [x] Documenter les tables Supabase obligatoires et optionnelles dans l’architecture hybride finale.
+- [x] Documenter la source de vérité des rôles `user` et `admin` et la promotion du premier admin.
+
 ## Schéma Supabase à définir
 
-- [ ] Comparer les tables actuelles de l’application avec les entités Supabase nécessaires.
-- [ ] Définir les relations, index et politiques RLS minimales pour Database, Auth et Storage.
-- [ ] Fournir à l’utilisateur une liste exacte des tables à créer et distinguer les tables obligatoires des tables optionnelles.
+- [x] Comparer les tables actuelles de l’application avec les entités Supabase nécessaires.
+- [x] Définir les relations, index et politiques RLS minimales pour Database, Auth et Storage.
+- [x] Fournir à l’utilisateur une liste exacte des tables à créer et distinguer les tables obligatoires des tables optionnelles.
 
 ## Politiques RLS et rôles Supabase
 
-- [ ] Définir les rôles applicatifs `user` et `admin` et leur source de vérité.
-- [ ] Définir les politiques RLS pour `profiles`, `subscriptions`, `templates`, `generations`, `usage` et `generation_assets`.
-- [ ] Définir les politiques Storage pour `product-images` et `generated-images`.
-- [ ] Fournir le SQL prêt à exécuter et les précautions de sécurité associées.
+- [x] Définir les rôles applicatifs `user` et `admin` et leur source de vérité.
+- [x] Définir les politiques RLS pour `profiles`, `subscriptions`, `templates`, `generations`, `usage` et `generation_assets`.
+- [x] Définir les politiques Storage pour `product-images` et `generated-images`. (Conservées dans le script de référence, mais non requises par l’architecture hybride finale.)
+- [x] Fournir le SQL prêt à exécuter et les précautions de sécurité associées.
 
 ## Migration Supabase complète
 
