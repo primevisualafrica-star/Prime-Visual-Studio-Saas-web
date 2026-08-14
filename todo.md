@@ -185,6 +185,22 @@
 - [x] Ajouter les fonctions de rôle et les politiques RLS pour Database et Storage.
 - [x] Fournir le script complet avec les avertissements sur les buckets, le premier admin et les opérations serveur.
 
+## Vérification finale du logo transparent
+
+- [x] Vérifier explicitement le logo transparent dans le header sur desktop.
+- [x] Enregistrer un checkpoint après validation du logo transparent et relire le TODO dans l’état sauvegardé.
+
+## Correction de validation du logo transparent
+
+- [x] Mettre à jour le test ciblé pour attendre l’asset transparent effectivement intégré.
+- [x] Relancer le typecheck et la suite Vitest après la correction du test.
+
+## Fond transparent du logo
+
+- [x] Produire une version du logo Prime Visual Africa sans fond blanc, en conservant le symbole et le lettrage.
+- [x] Remplacer l’asset intégré par la version transparente et ajuster le conteneur du header si nécessaire.
+- [x] Vérifier le rendu transparent sur desktop/mobile, les tests et enregistrer un checkpoint.
+
 ## Preuves finales de l’intégration du logo
 
 - [x] Ajouter un test ciblé vérifiant la référence du nouvel asset et son texte alternatif.
