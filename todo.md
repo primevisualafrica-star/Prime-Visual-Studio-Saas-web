@@ -185,6 +185,24 @@
 - [x] Ajouter les fonctions de rôle et les politiques RLS pour Database et Storage.
 - [x] Fournir le script complet avec les avertissements sur les buckets, le premier admin et les opérations serveur.
 
+## Preuves finales de l’intégration du logo
+
+- [x] Ajouter un test ciblé vérifiant la référence du nouvel asset et son texte alternatif.
+- [x] Documenter la revalidation desktop/mobile après l’ajustement de cadrage du logo.
+- [x] Enregistrer un nouveau checkpoint après l’intégration validée du nouveau logo.
+
+## Intégration du logo approuvé
+
+- [x] Copier/référencer l’asset du nouveau logo dans le site sans conserver l’ancien logo dans le header.
+- [x] Vérifier le rendu du nouveau logo sur desktop et mobile.
+- [x] Ajouter ou mettre à jour le test de référence du logo puis enregistrer un checkpoint. (Le typecheck et les 14 tests Vitest existants passent ; l’asset est validé visuellement dans le header.)
+
+## Nouvelle proposition de logo
+
+- [x] Générer une nouvelle proposition de logo « Prime Visual Africa » adaptée au SaaS.
+- [x] Vérifier visuellement la proposition sans modifier le logo actuellement utilisé.
+- [x] Présenter la proposition et attendre l’autorisation explicite avant toute intégration.
+
 ## Visibilité du pied de page
 
 - [x] Rendre le pied de page de la landing page visible et accessible sur desktop et mobile.
