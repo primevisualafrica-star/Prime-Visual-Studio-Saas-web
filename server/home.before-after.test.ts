@@ -17,6 +17,8 @@ describe("landing page before/after product showcase", () => {
     expect(home).toContain("before-after-overlay");
     expect(home).toContain("before-after-divider");
     expect(css).toContain("@keyframes before-after-reveal");
+    expect(css).toContain("0%, 12% { width: 100%; }");
+    expect(css).toContain("88%, 100% { width: 0%; }");
     expect(css).toContain("prefers-reduced-motion: reduce");
   });
 });

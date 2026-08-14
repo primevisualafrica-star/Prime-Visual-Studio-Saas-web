@@ -223,6 +223,17 @@
 - [x] Ajouter un test ciblé vérifiant les deux assets fournis et la classe de comparaison animée.
 - [x] Relancer le typecheck et Vitest après ce test.
 
+## Finalisation de la correction d’animation
+
+- [ ] Enregistrer un nouveau checkpoint après la correction de révélation du visuel Après.
+- [ ] Relire `todo.md` après le checkpoint sauvegardé pour confirmer l’état final de la correction.
+
+## Correction de révélation du visuel Après
+
+- [x] Faire commencer l’animation sur Avant puis révéler clairement Après jusqu’à un état final visible.
+- [x] Vérifier que la boucle, les labels et le mode réduit restent corrects sur desktop/mobile.
+- [x] Mettre à jour le test, relancer les validations et enregistrer un checkpoint.
+
 ## Visuels produit Avant / Après animés
 
 - [x] Publier les images fournies `Avant.jpg` et `Apres.webp` dans les assets persistants du site.
