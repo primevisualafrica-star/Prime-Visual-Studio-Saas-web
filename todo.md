@@ -215,8 +215,20 @@
 
 ## Finalisation des témoignages
 
-- [ ] Enregistrer un nouveau checkpoint après l’ajout de la section témoignages et la validation desktop/mobile.
-- [ ] Relire `todo.md` après le checkpoint sauvegardé pour confirmer l’état final des tâches de témoignages.
+- [x] Enregistrer un nouveau checkpoint après l’ajout de la section témoignages et la validation desktop/mobile.
+- [x] Relire `todo.md` après le checkpoint sauvegardé pour confirmer l’état final des tâches de témoignages.
+
+## Validation des visuels Avant / Après
+
+- [x] Ajouter un test ciblé vérifiant les deux assets fournis et la classe de comparaison animée.
+- [x] Relancer le typecheck et Vitest après ce test.
+
+## Visuels produit Avant / Après animés
+
+- [x] Publier les images fournies `Avant.jpg` et `Apres.webp` dans les assets persistants du site.
+- [x] Remplacer les images génériques de la section « Avant / Après » par les visuels fournis.
+- [x] Ajouter une animation de comparaison accessible avec prise en charge de `prefers-reduced-motion`.
+- [x] Vérifier desktop/mobile, le typecheck, les tests et enregistrer un checkpoint.
 
 ## Témoignages clients fournis
 
