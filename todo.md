@@ -213,6 +213,17 @@
 - [x] Vérifier le rendu du nouveau logo sur desktop et mobile.
 - [x] Ajouter ou mettre à jour le test de référence du logo puis enregistrer un checkpoint. (Le typecheck et les 14 tests Vitest existants passent ; l’asset est validé visuellement dans le header.)
 
+## Finalisation des témoignages
+
+- [ ] Enregistrer un nouveau checkpoint après l’ajout de la section témoignages et la validation desktop/mobile.
+- [ ] Relire `todo.md` après le checkpoint sauvegardé pour confirmer l’état final des tâches de témoignages.
+
+## Témoignages clients fournis
+
+- [x] Ajouter une section de trois témoignages clients fournis par l’utilisateur, sans inventer de contenu supplémentaire.
+- [x] Vérifier la lisibilité et l’ordre responsive de la section sur desktop et mobile.
+- [x] Ajouter ou mettre à jour le test de présence des témoignages et enregistrer un checkpoint.
+
 ## Nouvelle proposition de logo
 
 - [x] Générer une nouvelle proposition de logo « Prime Visual Africa » adaptée au SaaS.
