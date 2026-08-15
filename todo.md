@@ -274,9 +274,9 @@
 
 ## Synchronisation GitHub demandée
 
-- [ ] Vérifier le dépôt distant, la branche et l’état local avant synchronisation.
-- [ ] Commit/pousser les dernières corrections validées vers `Prime-Visual-Studio-Saas-web`.
-- [ ] Vérifier le commit et la branche distants après le push.
+- [x] Vérifier le dépôt distant, la branche et l’état local avant synchronisation.
+- [x] Commit/pousser les dernières corrections validées vers `Prime-Visual-Studio-Saas-web`.
+- [x] Vérifier le commit et la branche distants après le push.
 
 ## Tests ciblés des boutons
 
