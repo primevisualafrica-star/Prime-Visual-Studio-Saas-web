@@ -270,7 +270,13 @@
 
 - [x] Ajouter de vrais tests d’interaction pour les CTA corrigés, l’alias `/studio`, l’authentification et les boutons d’abonnement.
 - [x] Revalider explicitement les pages `/`, `/studio`, `/create` et `/subscription` sur desktop et mobile.
-- [ ] Enregistrer un nouveau checkpoint après les validations réussies des boutons.
+- [x] Enregistrer un nouveau checkpoint après les validations réussies des boutons.
+
+## Synchronisation GitHub demandée
+
+- [ ] Vérifier le dépôt distant, la branche et l’état local avant synchronisation.
+- [ ] Commit/pousser les dernières corrections validées vers `Prime-Visual-Studio-Saas-web`.
+- [ ] Vérifier le commit et la branche distants après le push.
 
 ## Tests ciblés des boutons
 
