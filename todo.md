@@ -295,7 +295,7 @@
 
 ## Nouvelle synchronisation GitHub demandée
 
-- [ ] Vérifier l’état local, le remote GitHub et la branche `main`.
-- [ ] Committer et pousser les dernières modifications vers `Prime-Visual-Studio-Saas-web`.
-- [ ] Vérifier le commit distant et confirmer la synchronisation.
+- [x] Vérifier l’état local, le remote GitHub et la branche `main`.
+- [x] Committer et pousser les dernières modifications vers `Prime-Visual-Studio-Saas-web`.
+- [x] Vérifier le commit distant et confirmer la synchronisation.
 
