@@ -353,3 +353,11 @@
 - [x] Validate the production build and Vercel configuration, including SPA routing.
 - [x] Save a checkpoint, push the complete change to GitHub `main`, and verify the remote commit.
 
+
+## Correctif Supabase : email rate limit exceeded
+
+- [x] Diagnostiquer le traitement actuel des erreurs de limite d’e-mails et le flux de session après magic link.
+- [x] Ajouter un délai de réessai, empêcher les doubles envois et afficher une aide claire pour l’utilisateur.
+- [x] Vérifier que les utilisateurs authentifiés peuvent atteindre l’abonnement et que les erreurs RLS/session sont distinguées. (Le parcours est débloqué après session ; la limite d’e-mails reste une limite du fournisseur.)
+- [x] Ajouter les tests, valider le build et documenter les réglages Supabase/Vercel nécessaires.
+

@@ -27,4 +27,14 @@ describe("authentication dialog button flow", () => {
     expect(layout).toContain("onClick={() => setAuthOpen(true)}");
     expect(layout).toContain("<AuthDialog open={authOpen}");
   });
+
+  it("handles Supabase email rate limits with a retry message and cooldown", () => {
+    const auth = readProjectFile("client/src/const.ts");
+    const dialog = readProjectFile("client/src/components/AuthDialog.tsx");
+    expect(auth).toContain("over_email_send_rate_limit");
+    expect(auth).toContain("Attendez ${retryAfterSeconds} secondes");
+    expect(dialog).toContain("prime-auth-cooldown");
+    expect(dialog).toContain("disabled={submitting || cooldown > 0}");
+    expect(dialog).toContain("Réessayez dans");
+  });
 });

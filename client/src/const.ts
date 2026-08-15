@@ -2,7 +2,23 @@ import { supabase } from "@/lib/supabase";
 
 export { COOKIE_NAME, ONE_YEAR_MS } from "@shared/const";
 
-type AuthActionResult = { ok: boolean; message?: string };
+type AuthActionResult = { ok: boolean; message?: string; retryAfterSeconds?: number };
+
+const DEFAULT_AUTH_RETRY_SECONDS = 60;
+
+function normalizeAuthError(message: string): AuthActionResult {
+  const normalized = message.toLowerCase();
+  const isRateLimited = normalized.includes("rate limit") || normalized.includes("too many") || normalized.includes("over_email_send_rate_limit");
+  if (!isRateLimited) return { ok: false, message };
+
+  const secondsMatch = message.match(/(\d+)\s*(?:seconds?|secondes?)/i);
+  const retryAfterSeconds = secondsMatch ? Math.max(30, Number(secondsMatch[1])) : DEFAULT_AUTH_RETRY_SECONDS;
+  return {
+    ok: false,
+    retryAfterSeconds,
+    message: `Supabase limite temporairement les e-mails de connexion. Attendez ${retryAfterSeconds} secondes avant de réessayer, ou utilisez le dernier lien reçu.`,
+  };
+}
 
 /**
  * Envoie un lien magique Supabase. Le fallback prompt reste disponible pour
@@ -22,10 +38,15 @@ export const startLogin = async (providedEmail?: string): Promise<AuthActionResu
   });
 
   if (error) {
-    return { ok: false, message: `Connexion impossible : ${error.message}` };
+    const normalized = normalizeAuthError(error.message);
+    return normalized.message === error.message ? { ok: false, message: `Connexion impossible : ${error.message}` } : normalized;
   }
 
-  return { ok: true, message: "Un lien de connexion vient d’être envoyé à votre adresse e-mail." };
+  return {
+    ok: true,
+    retryAfterSeconds: DEFAULT_AUTH_RETRY_SECONDS,
+    message: "Un lien de connexion vient d’être envoyé. Attendez une minute avant de demander un nouveau lien.",
+  };
 };
 
 export const startPasswordRecovery = async (providedEmail?: string): Promise<AuthActionResult> => {
@@ -39,8 +60,13 @@ export const startPasswordRecovery = async (providedEmail?: string): Promise<Aut
   });
 
   if (error) {
-    return { ok: false, message: `Réinitialisation impossible : ${error.message}` };
+    const normalized = normalizeAuthError(error.message);
+    return normalized.message === error.message ? { ok: false, message: `Réinitialisation impossible : ${error.message}` } : normalized;
   }
 
-  return { ok: true, message: "Le lien de réinitialisation vient d’être envoyé à votre adresse e-mail." };
+  return {
+    ok: true,
+    retryAfterSeconds: DEFAULT_AUTH_RETRY_SECONDS,
+    message: "Le lien de réinitialisation vient d’être envoyé. Attendez une minute avant de demander un nouveau lien.",
+  };
 };
