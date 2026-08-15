@@ -310,7 +310,7 @@
 
 ## Nouvelle mise à jour GitHub
 
-- [ ] Vérifier l’état local et le remote GitHub `github/main`.
-- [ ] Pousser les éventuelles dernières modifications vers `Prime-Visual-Studio-Saas-web`.
-- [ ] Confirmer le commit distant et l’état synchronisé.
+- [x] Vérifier l’état local et le remote GitHub `github/main`.
+- [x] Pousser les éventuelles dernières modifications vers `Prime-Visual-Studio-Saas-web`.
+- [x] Confirmer le commit distant et l’état synchronisé.
 
