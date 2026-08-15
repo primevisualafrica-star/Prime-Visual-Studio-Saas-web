@@ -18,7 +18,8 @@ describe("button destinations and feedback", () => {
   it("defines explicit authentication feedback instead of silent no-op actions", () => {
     const auth = readProjectFile("client/src/const.ts");
     expect(auth).toMatch(/supabase\.auth\.(signInWithOtp|resetPasswordForEmail)/);
-    expect(auth).toMatch(/toast|alert|console\.error/);
+    expect(auth).toContain("message:");
+    expect(auth).toContain("Promise<AuthActionResult>");
   });
 
   it("keeps explicit subscription actions in the private studio", () => {

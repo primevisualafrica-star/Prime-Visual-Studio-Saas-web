@@ -314,3 +314,26 @@
 - [x] Pousser les éventuelles dernières modifications vers `Prime-Visual-Studio-Saas-web`.
 - [x] Confirmer le commit distant et l’état synchronisé.
 
+
+## Vérification navigateur demandée
+
+- [x] Ouvrir la landing page et recenser les liens et boutons visibles.
+- [x] Tester les routes publiques et les CTA de navigation dans le navigateur.
+- [x] Relever les erreurs de routage, console ou authentification et restituer les résultats.
+
+
+## Vérification Supabase demandée
+
+- [x] Vérifier la présence et la forme de la configuration Supabase sans afficher les secrets.
+- [x] Tester l’accessibilité de l’URL Supabase et les endpoints Auth/abonnements disponibles. (Auth HTTP 200 ; REST `subscriptions` HTTP 401 avec la clé publishable seule.)
+- [x] Restituer clairement ce qui fonctionne, ce qui est bloqué et les éventuelles actions requises.
+
+
+## Audit boutons, Supabase et déploiements
+
+- [x] Auditer les handlers de boutons, les routes et les erreurs frontend dans le dépôt actuel et sur GitHub.
+- [x] Vérifier Supabase Auth, les abonnements et la propagation des sessions.
+- [x] Contrôler les URLs et réponses des déploiements Manus et Vercel. (Le déploiement Vercel est protégé par la page de connexion Vercel ; sa configuration reste frontend statique sans runtime `/api/trpc`.)
+- [x] Reproduire les actions principales dans le navigateur et identifier les causes.
+- [ ] Corriger les boutons, ajouter les tests, valider et synchroniser le correctif. (Correction et validations locales terminées ; synchronisation GitHub à finaliser.)
+

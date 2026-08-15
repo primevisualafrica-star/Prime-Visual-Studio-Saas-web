@@ -19,7 +19,7 @@ import {
   SidebarTrigger,
   useSidebar,
 } from "@/components/ui/sidebar";
-import { startLogin } from "@/const";
+import AuthDialog from "@/components/AuthDialog";
 import { useIsMobile } from "@/hooks/useMobile";
 import { LayoutDashboard, LogOut, PanelLeft, Sparkles, Images, CreditCard, UserCircle, ShieldCheck } from "lucide-react";
 import { CSSProperties, useEffect, useRef, useState } from "react";
@@ -50,6 +50,7 @@ export default function DashboardLayout({
     return saved ? parseInt(saved, 10) : DEFAULT_WIDTH;
   });
   const { loading, user } = useAuth();
+  const [authOpen, setAuthOpen] = useState(false);
 
   useEffect(() => {
     localStorage.setItem(SIDEBAR_WIDTH_KEY, sidebarWidth.toString());
@@ -73,13 +74,14 @@ export default function DashboardLayout({
             </p>
           </div>
           <Button
-            onClick={() => startLogin()}
+            onClick={() => setAuthOpen(true)}
             size="lg"
             className="w-full shadow-lg hover:shadow-xl transition-all"
           >
             Se connecter
           </Button>
         </div>
+        <AuthDialog open={authOpen} onOpenChange={setAuthOpen} />
       </div>
     );
   }

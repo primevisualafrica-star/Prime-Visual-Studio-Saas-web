@@ -2,16 +2,16 @@ import { supabase } from "@/lib/supabase";
 
 export { COOKIE_NAME, ONE_YEAR_MS } from "@shared/const";
 
+type AuthActionResult = { ok: boolean; message?: string };
+
 /**
- * Démarre une connexion ou une inscription Supabase par lien magique.
- * Le prompt est temporaire afin de conserver les boutons existants sans
- * introduire un nouveau écran avant la migration complète de l’interface.
+ * Envoie un lien magique Supabase. Le fallback prompt reste disponible pour
+ * les intégrations legacy, mais l’interface utilise désormais AuthDialog.
  */
-export const startLogin = async () => {
-  const email = window.prompt("Entrez votre adresse e-mail pour recevoir votre lien de connexion :")?.trim();
+export const startLogin = async (providedEmail?: string): Promise<AuthActionResult> => {
+  const email = (providedEmail ?? window.prompt("Entrez votre adresse e-mail pour recevoir votre lien de connexion :"))?.trim();
   if (!email) {
-    window.alert("Veuillez saisir une adresse e-mail pour continuer.");
-    return;
+    return { ok: false, message: "Veuillez saisir une adresse e-mail pour continuer." };
   }
 
   const { error } = await supabase.auth.signInWithOtp({
@@ -22,18 +22,16 @@ export const startLogin = async () => {
   });
 
   if (error) {
-    window.alert(`Connexion impossible : ${error.message}`);
-    return;
+    return { ok: false, message: `Connexion impossible : ${error.message}` };
   }
 
-  window.alert("Un lien de connexion vient d’être envoyé à votre adresse e-mail.");
+  return { ok: true, message: "Un lien de connexion vient d’être envoyé à votre adresse e-mail." };
 };
 
-export const startPasswordRecovery = async () => {
-  const email = window.prompt("Entrez votre adresse e-mail pour réinitialiser votre mot de passe :")?.trim();
+export const startPasswordRecovery = async (providedEmail?: string): Promise<AuthActionResult> => {
+  const email = (providedEmail ?? window.prompt("Entrez votre adresse e-mail pour réinitialiser votre mot de passe :"))?.trim();
   if (!email) {
-    window.alert("Veuillez saisir une adresse e-mail pour réinitialiser votre mot de passe.");
-    return;
+    return { ok: false, message: "Veuillez saisir une adresse e-mail pour réinitialiser votre mot de passe." };
   }
 
   const { error } = await supabase.auth.resetPasswordForEmail(email, {
@@ -41,9 +39,8 @@ export const startPasswordRecovery = async () => {
   });
 
   if (error) {
-    window.alert(`Réinitialisation impossible : ${error.message}`);
-    return;
+    return { ok: false, message: `Réinitialisation impossible : ${error.message}` };
   }
 
-  window.alert("Le lien de réinitialisation vient d’être envoyé à votre adresse e-mail.");
+  return { ok: true, message: "Le lien de réinitialisation vient d’être envoyé à votre adresse e-mail." };
 };
