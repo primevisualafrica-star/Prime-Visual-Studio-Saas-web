@@ -17,8 +17,22 @@ function getForgeConfig() {
   return { forgeUrl: forgeUrl.replace(/\/+$/, ""), forgeKey };
 }
 
+function sanitizeSegment(segment: string): string {
+  return (
+    segment
+      .normalize("NFKD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/[^a-zA-Z0-9._-]+/g, "-")
+      .replace(/^-+|-+$/g, "") || "file"
+  );
+}
+
 function normalizeKey(relKey: string): string {
-  return relKey.replace(/^\/+/, "");
+  return relKey
+    .replace(/^\/+/, "")
+    .split("/")
+    .map(sanitizeSegment)
+    .join("/");
 }
 
 function appendHashSuffix(relKey: string): string {
@@ -69,6 +83,14 @@ export async function storagePut(
   }
 
   return { key, url: `/manus-storage/${key}` };
+}
+
+export async function storageAssertReadable(relKey: string): Promise<void> {
+  const signedUrl = await storageGetSignedUrl(relKey);
+  const response = await fetch(signedUrl, { method: "GET" });
+  if (!response.ok) {
+    throw new Error(`Storage object is not readable (${response.status})`);
+  }
 }
 
 export async function storageGet(relKey: string): Promise<{ key: string; url: string }> {

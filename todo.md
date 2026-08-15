@@ -384,3 +384,10 @@
 - [x] Ajouter un diagnostic utile côté interface et une couverture de test ciblée.
 - [x] Valider le build, le parcours `/create` et enregistrer un checkpoint. (Smoke test provider frais HTTP 200, 4 tests ciblés, typecheck et build réussis.)
 
+
+## Nouvel échec génération `/create` — 2026-08-15 17:03
+
+- [x] Inspecter les logs serveur et la réponse provider autour du timestamp signalé. (L’upload `60002` utilisait une clé avec espaces et le GET stockage répondait 403.)
+- [x] Identifier et corriger la cause résiduelle sans consommer de crédit en cas d’échec. (Clés normalisées et objet vérifié immédiatement après upload.)
+- [x] Ajouter ou mettre à jour les tests et améliorer le diagnostic affiché à l’utilisateur. (7 tests ciblés passants ; crédits protégés avant réussite.)
+- [x] Valider le build et enregistrer un checkpoint après correction. (TypeScript et build de production passants.)
