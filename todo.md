@@ -283,3 +283,12 @@
 - [x] Ajouter un test vérifiant les routes privées principales et l’alias `/studio`.
 - [x] Ajouter un test vérifiant les actions d’authentification et d’abonnement sans handlers silencieux.
 - [x] Relancer les validations et enregistrer un checkpoint après l’audit des boutons.
+
+## Optimisation mobile demandée
+
+- [x] Auditer le rendu mobile de la landing page et des écrans principaux sur 320, 360, 390 et 430 px.
+- [x] Optimiser le header, les CTA, les espacements, les grilles et les zones tactiles pour mobile.
+- [x] Vérifier l’absence de débordement horizontal et préserver la lisibilité du contenu français.
+- [x] Ajouter ou mettre à jour les tests DOM pertinents et exécuter le typecheck et Vitest. (Typecheck et test mobile ciblé passent ; la suite globale conserve des erreurs de configuration historiques non liées à cette modification.)
+- [x] Capturer les vérifications responsive et enregistrer un checkpoint après validation.
+
