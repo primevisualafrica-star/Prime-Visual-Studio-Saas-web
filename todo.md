@@ -299,3 +299,11 @@
 - [x] Committer et pousser les dernières modifications vers `Prime-Visual-Studio-Saas-web`.
 - [x] Vérifier le commit distant et confirmer la synchronisation.
 
+
+## Correctif déploiement Vercel
+
+- [x] Inspecter la configuration Vercel, le package script et le point d’entrée frontend.
+- [x] Corriger le build ou le routage SPA afin que la landing page soit servie comme HTML compilé.
+- [x] Tester le build de production et les routes principales après correction.
+- [x] Documenter les paramètres Vercel requis et enregistrer un checkpoint.
+
