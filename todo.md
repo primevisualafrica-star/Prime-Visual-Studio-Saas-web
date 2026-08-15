@@ -340,10 +340,10 @@
 
 ## Authenticated profile dropdown
 
-- [ ] Audit the public and private navigation components plus the Supabase session hook.
-- [ ] Show the authenticated user avatar/name and a responsive dropdown after successful login.
-- [ ] Add profile menu actions for account/profile, subscription and logout with accessible keyboard behavior.
-- [ ] Add regression tests and verify desktop/mobile rendering before saving a checkpoint.
+- [x] Audit the public and private navigation components plus the Supabase session hook.
+- [x] Show the authenticated user avatar/name and a responsive dropdown after successful login.
+- [x] Add profile menu actions for account/profile, subscription and logout with accessible keyboard behavior.
+- [x] Add regression tests and verify desktop/mobile rendering before saving a checkpoint.
 
 
 ## Profile dropdown delivery and Vercel verification
@@ -351,5 +351,5 @@
 - [x] Finish and audit the profile dropdown integration in the public navigation.
 - [x] Add or update tests for authenticated profile-menu visibility and actions.
 - [x] Validate the production build and Vercel configuration, including SPA routing.
-- [ ] Save a checkpoint, push the complete change to GitHub `main`, and verify the remote commit.
+- [x] Save a checkpoint, push the complete change to GitHub `main`, and verify the remote commit.
 
