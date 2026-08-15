@@ -292,3 +292,10 @@
 - [x] Ajouter ou mettre à jour les tests DOM pertinents et exécuter le typecheck et Vitest. (Typecheck et test mobile ciblé passent ; la suite globale conserve des erreurs de configuration historiques non liées à cette modification.)
 - [x] Capturer les vérifications responsive et enregistrer un checkpoint après validation.
 
+
+## Nouvelle synchronisation GitHub demandée
+
+- [ ] Vérifier l’état local, le remote GitHub et la branche `main`.
+- [ ] Committer et pousser les dernières modifications vers `Prime-Visual-Studio-Saas-web`.
+- [ ] Vérifier le commit distant et confirmer la synchronisation.
+
