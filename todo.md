@@ -307,3 +307,10 @@
 - [x] Tester le build de production et les routes principales après correction.
 - [x] Documenter les paramètres Vercel requis et enregistrer un checkpoint.
 
+
+## Nouvelle mise à jour GitHub
+
+- [ ] Vérifier l’état local et le remote GitHub `github/main`.
+- [ ] Pousser les éventuelles dernières modifications vers `Prime-Visual-Studio-Saas-web`.
+- [ ] Confirmer le commit distant et l’état synchronisé.
+
