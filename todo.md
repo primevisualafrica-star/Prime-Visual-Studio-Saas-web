@@ -335,5 +335,21 @@
 - [x] Vérifier Supabase Auth, les abonnements et la propagation des sessions.
 - [x] Contrôler les URLs et réponses des déploiements Manus et Vercel. (Le déploiement Vercel est protégé par la page de connexion Vercel ; sa configuration reste frontend statique sans runtime `/api/trpc`.)
 - [x] Reproduire les actions principales dans le navigateur et identifier les causes.
-- [ ] Corriger les boutons, ajouter les tests, valider et synchroniser le correctif. (Correction et validations locales terminées ; synchronisation GitHub à finaliser.)
+- [x] Corriger les boutons, ajouter les tests, valider et synchroniser le correctif. (Correction, validations locales, checkpoint et synchronisation GitHub terminés.)
+
+
+## Authenticated profile dropdown
+
+- [ ] Audit the public and private navigation components plus the Supabase session hook.
+- [ ] Show the authenticated user avatar/name and a responsive dropdown after successful login.
+- [ ] Add profile menu actions for account/profile, subscription and logout with accessible keyboard behavior.
+- [ ] Add regression tests and verify desktop/mobile rendering before saving a checkpoint.
+
+
+## Profile dropdown delivery and Vercel verification
+
+- [x] Finish and audit the profile dropdown integration in the public navigation.
+- [x] Add or update tests for authenticated profile-menu visibility and actions.
+- [x] Validate the production build and Vercel configuration, including SPA routing.
+- [ ] Save a checkpoint, push the complete change to GitHub `main`, and verify the remote commit.
 
