@@ -376,3 +376,11 @@
 - [x] Corriger la cause, les états de chargement et le message d’erreur utilisateur. (URLs signées utilisées pour l’original et le résultat généré.)
 - [x] Ajouter ou mettre à jour les tests, valider le build et enregistrer un checkpoint.
 
+
+## Erreur génération `/create` — 2026-08-15
+
+- [x] Inspecter les logs de la mutation et identifier l’étape qui échoue pour l’utilisateur authentifié.
+- [x] Corriger la cause exacte sans consommer de crédit lors d’un échec. (Stockage proxy streamé, URL publique absolue pour le provider ; les crédits sont consommés uniquement après stockage réussi.)
+- [x] Ajouter un diagnostic utile côté interface et une couverture de test ciblée.
+- [x] Valider le build, le parcours `/create` et enregistrer un checkpoint. (Smoke test provider frais HTTP 200, 4 tests ciblés, typecheck et build réussis.)
+

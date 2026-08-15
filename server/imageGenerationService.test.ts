@@ -17,12 +17,13 @@ describe("ImageGenerationService prompt contract", () => {
     expect(labels).toEqual(["Analyse du produit…", "Création de la scène…", "Finalisation…"]);
   });
 
-  it("uses signed URLs for provider and server-side processing", () => {
+  it("uses a public storage-proxy URL for the provider and a signed URL for server-side output processing", () => {
     const service = readFileSync(resolve(process.cwd(), "server/services/imageGenerationService.ts"), "utf8");
     const router = readFileSync(resolve(process.cwd(), "server/routers.ts"), "utf8");
     const helper = readFileSync(resolve(process.cwd(), "server/_core/imageGeneration.ts"), "utf8");
     expect(service).toContain("signedUrl");
-    expect(router).toContain("storageGetSignedUrl");
+    expect(router).toContain("/manus-storage/${generation.originalImageKey}");
+    expect(router).toContain("requestOrigin");
     expect(router).toContain("fetch(result.signedUrl)");
     expect(helper).toContain("const signedUrl = await storageGetSignedUrl(stored.key)");
   });
