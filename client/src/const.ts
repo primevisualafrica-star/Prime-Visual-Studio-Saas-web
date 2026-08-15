@@ -9,7 +9,10 @@ export { COOKIE_NAME, ONE_YEAR_MS } from "@shared/const";
  */
 export const startLogin = async () => {
   const email = window.prompt("Entrez votre adresse e-mail pour recevoir votre lien de connexion :")?.trim();
-  if (!email) return;
+  if (!email) {
+    window.alert("Veuillez saisir une adresse e-mail pour continuer.");
+    return;
+  }
 
   const { error } = await supabase.auth.signInWithOtp({
     email,
@@ -28,7 +31,10 @@ export const startLogin = async () => {
 
 export const startPasswordRecovery = async () => {
   const email = window.prompt("Entrez votre adresse e-mail pour réinitialiser votre mot de passe :")?.trim();
-  if (!email) return;
+  if (!email) {
+    window.alert("Veuillez saisir une adresse e-mail pour réinitialiser votre mot de passe.");
+    return;
+  }
 
   const { error } = await supabase.auth.resetPasswordForEmail(email, {
     redirectTo: window.location.origin,

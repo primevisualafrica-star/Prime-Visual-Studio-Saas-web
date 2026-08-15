@@ -225,8 +225,15 @@
 
 ## Finalisation de la correction d’animation
 
-- [ ] Enregistrer un nouveau checkpoint après la correction de révélation du visuel Après.
-- [ ] Relire `todo.md` après le checkpoint sauvegardé pour confirmer l’état final de la correction.
+- [x] Enregistrer un nouveau checkpoint après la correction de révélation du visuel Après.
+- [x] Relire `todo.md` après le checkpoint sauvegardé pour confirmer l’état final de la correction.
+
+## Correction des boutons non fonctionnels
+
+- [x] Auditer tous les boutons et liens d’action de la landing page et des écrans principaux.
+- [x] Corriger les handlers, routes et liens qui ne déclenchent aucune action ou produisent une erreur.
+- [x] Ajouter ou mettre à jour les tests ciblés des boutons et vérifier desktop/mobile.
+- [x] Enregistrer un checkpoint après validation de la correction.
 
 ## Correction de révélation du visuel Après
 
@@ -258,3 +265,15 @@
 - [x] Rendre le pied de page de la landing page visible et accessible sur desktop et mobile.
 - [x] Vérifier le rendu du pied de page sur les vues desktop et mobile.
 - [x] Ajouter ou mettre à jour un test Vitest couvrant la structure du pied de page.
+
+## Tests d’interaction des boutons
+
+- [x] Ajouter de vrais tests d’interaction pour les CTA corrigés, l’alias `/studio`, l’authentification et les boutons d’abonnement.
+- [x] Revalider explicitement les pages `/`, `/studio`, `/create` et `/subscription` sur desktop et mobile.
+- [ ] Enregistrer un nouveau checkpoint après les validations réussies des boutons.
+
+## Tests ciblés des boutons
+
+- [x] Ajouter un test vérifiant les routes privées principales et l’alias `/studio`.
+- [x] Ajouter un test vérifiant les actions d’authentification et d’abonnement sans handlers silencieux.
+- [x] Relancer les validations et enregistrer un checkpoint après l’audit des boutons.
