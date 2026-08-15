@@ -7,7 +7,7 @@ export type GenerateVisualInput = {
 };
 
 export interface ImageGenerationService {
-  generateVisual(input: GenerateVisualInput): Promise<{ url: string }>;
+  generateVisual(input: GenerateVisualInput): Promise<{ url: string; signedUrl: string }>;
 }
 
 class ManagedImageGenerationService implements ImageGenerationService {
@@ -17,8 +17,8 @@ class ManagedImageGenerationService implements ImageGenerationService {
       originalImages: [{ url: input.originalImageUrl, mimeType: input.mimeType }],
       model: "MODEL_GPT_IMAGE_2",
     });
-    if (!result.url) throw new Error("Le fournisseur IA n'a pas renvoyé d'image.");
-    return { url: result.url };
+    if (!result.url || !result.signedUrl) throw new Error("Le fournisseur IA n'a pas renvoyé d'image.");
+    return { url: result.url, signedUrl: result.signedUrl };
   }
 }
 

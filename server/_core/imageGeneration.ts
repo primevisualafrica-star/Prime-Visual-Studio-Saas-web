@@ -15,7 +15,7 @@
  *     }]
  *   });
  */
-import { storagePut } from "server/storage";
+import { storageGetSignedUrl, storagePut } from "../storage";
 import { ENV } from "./env";
 
 // Default model for generated sites. "MODEL_GPT_IMAGE_2" is the forge images.v1
@@ -38,6 +38,7 @@ export type GenerateImageOptions = {
 
 export type GenerateImageResponse = {
   url?: string;
+  signedUrl?: string;
 };
 
 export async function generateImage(
@@ -96,13 +97,15 @@ export async function generateImage(
   const buffer = Buffer.from(base64Data, "base64");
 
   // Save to S3
-  const { url } = await storagePut(
+  const stored = await storagePut(
     `generated/${Date.now()}.png`,
     buffer,
     result.image.mimeType
   );
+  const signedUrl = await storageGetSignedUrl(stored.key);
   return {
-    url,
+    url: stored.url,
+    signedUrl,
   };
 }
 

@@ -22,4 +22,12 @@ describe("authenticated profile dropdown", () => {
     expect(menu).toContain('setLocation("/subscription")');
     expect(menu).toContain("void logout()");
   });
+
+  it("provides an accessible previous-page control in the mobile dashboard header", () => {
+    const layout = readProjectFile("client/src/components/DashboardLayout.tsx");
+    expect(layout).toContain("ArrowLeft");
+    expect(layout).toContain('aria-label="Retour à la page précédente"');
+    expect(layout).toContain("window.history.back()");
+    expect(layout).toContain('setLocation("/dashboard")');
+  });
 });

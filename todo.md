@@ -361,3 +361,18 @@
 - [x] Vérifier que les utilisateurs authentifiés peuvent atteindre l’abonnement et que les erreurs RLS/session sont distinguées. (Le parcours est débloqué après session ; la limite d’e-mails reste une limite du fournisseur.)
 - [x] Ajouter les tests, valider le build et documenter les réglages Supabase/Vercel nécessaires.
 
+
+## Navigation retour demandée
+
+- [x] Auditer les layouts et routes où l’utilisateur a besoin de revenir à la page précédente.
+- [x] Ajouter une icône de retour accessible avec navigation historique et fallback sûr.
+- [x] Ajouter les tests et vérifier le rendu mobile/desktop avant le checkpoint.
+
+
+## Bug génération d’image dans le Studio
+
+- [x] Auditer le parcours upload, sélection de scène/catégorie et mutation de génération.
+- [x] Reproduire l’échec et inspecter les logs frontend/backend et la réponse du fournisseur d’image. (Cause confirmée : URLs `/manus-storage/...` relatives envoyées au fournisseur et refetch serveur d’une URL relative.)
+- [x] Corriger la cause, les états de chargement et le message d’erreur utilisateur. (URLs signées utilisées pour l’original et le résultat généré.)
+- [x] Ajouter ou mettre à jour les tests, valider le build et enregistrer un checkpoint.
+
