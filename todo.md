@@ -391,3 +391,10 @@
 - [x] Identifier et corriger la cause résiduelle sans consommer de crédit en cas d’échec. (Clés normalisées et objet vérifié immédiatement après upload.)
 - [x] Ajouter ou mettre à jour les tests et améliorer le diagnostic affiché à l’utilisateur. (7 tests ciblés passants ; crédits protégés avant réussite.)
 - [x] Valider le build et enregistrer un checkpoint après correction. (TypeScript et build de production passants.)
+
+## Synchronisation GitHub du correctif de génération
+
+- [ ] Vérifier l’état local, le remote `github` et la branche `main`.
+- [ ] Committer et pousser le correctif de normalisation des clés de stockage.
+- [ ] Vérifier le commit distant et confirmer la synchronisation.
+
