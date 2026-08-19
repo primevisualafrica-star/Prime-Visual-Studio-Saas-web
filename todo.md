@@ -428,3 +428,9 @@
 - [ ] Prepare and configure a custom domain and frontend error monitoring, documenting any user-owned DNS, domain, or monitoring credentials required.
 - [x] Exclude custom-domain setup from this follow-up at the user's request; retain the default Manus/Vercel URL.
 - [x] Synchronize the latest Supabase configuration and frontend error-monitoring changes to `Prime-Visual-Studio-Saas-web` and verify the remote commit.
+
+## Vercel logo rendering correction
+
+- [x] Diagnose why the Prime Visual Africa logo is not rendering correctly on the current Vercel deployment.
+- [x] Correct the logo asset/layout for desktop and mobile and add regression coverage.
+- [ ] Validate, publish, and synchronize the logo correction to Vercel/GitHub.
