@@ -408,14 +408,15 @@
 
 ## Vercel : SaaS non visible en ligne
 
-- [ ] Identifier l’URL publique réelle et vérifier sa réponse HTTP et son contenu.
-- [ ] Inspecter les réglages Vercel de protection, build output, rewrites et point d’entrée.
-- [ ] Corriger la configuration nécessaire et valider `/`, `/studio`, `/create` et `/subscription`.
-- [ ] Enregistrer un checkpoint, synchroniser GitHub et expliquer l’URL publique à utiliser.
+- [x] Identifier l’URL publique réelle et vérifier sa réponse HTTP et son contenu.
+- [x] Inspecter les réglages Vercel de protection, build output, rewrites et point d’entrée.
+- [x] Corriger la configuration nécessaire et valider `/`, `/studio`, `/create` et `/subscription`.
+- [x] Enregistrer un checkpoint, synchroniser GitHub et expliquer l’URL publique à utiliser.
 
 
 ## Vercel production blank page
 
  - [x] Fix the blank Vercel page caused by fatal Supabase client initialization when frontend environment variables are missing or unresolved.
  - [x] Add regression coverage proving the app entry remains renderable without Supabase configuration and reports a clear French authentication configuration error.
-- [ ] Rebuild and verify the Vercel production page, then synchronize the final fix to GitHub.
+- [x] Rebuild and verify the Vercel production page, then synchronize the final fix to GitHub.
+ - [x] Fix the existing footer test's non-file URL path resolution so the full Vitest suite passes in the current runner.
