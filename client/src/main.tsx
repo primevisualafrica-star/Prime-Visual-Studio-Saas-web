@@ -44,9 +44,11 @@ const trpcClient = trpc.createClient({
       url: "/api/trpc",
       transformer: superjson,
       async headers() {
-        const { data } = await supabase.auth.getSession();
-        if (data.session?.access_token) {
-          return { Authorization: `Bearer ${data.session.access_token}` };
+        if (supabase) {
+          const { data } = await supabase.auth.getSession();
+          if (data.session?.access_token) {
+            return { Authorization: `Bearer ${data.session.access_token}` };
+          }
         }
 
         // Preview auto-login fallback: when the browser blocks iframe cookies

@@ -12,5 +12,14 @@ describe("Vercel deployment configuration", () => {
     expect(config.outputDirectory).toBe("dist/public");
     expect(config.rewrites).toEqual([{ source: "/(.*)", destination: "/index.html" }]);
   });
+
+  it("keeps the Vercel entry HTML free of unresolved analytics placeholders", () => {
+    const html = readFileSync(resolve(projectRoot, "client/index.html"), "utf8");
+
+    expect(html).toContain('<html lang="fr">');
+    expect(html).toContain('<div id="root"></div>');
+    expect(html).not.toContain("%VITE_ANALYTICS_ENDPOINT%");
+    expect(html).not.toContain("%VITE_ANALYTICS_WEBSITE_ID%");
+  });
 });
 

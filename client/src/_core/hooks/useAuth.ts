@@ -29,6 +29,8 @@ export function useAuth(options?: UseAuthOptions) {
   });
 
   useEffect(() => {
+    if (!supabase) return;
+
     const { data: listener } = supabase.auth.onAuthStateChange(() => {
       void utils.auth.me.invalidate();
     });
@@ -37,7 +39,9 @@ export function useAuth(options?: UseAuthOptions) {
 
   const logout = useCallback(async () => {
     try {
-      await supabase.auth.signOut();
+      if (supabase) {
+        await supabase.auth.signOut();
+      }
       await logoutMutation.mutateAsync();
     } catch (error: unknown) {
       if (

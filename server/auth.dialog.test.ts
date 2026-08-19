@@ -37,4 +37,18 @@ describe("authentication dialog button flow", () => {
     expect(dialog).toContain("disabled={submitting || cooldown > 0}");
     expect(dialog).toContain("Réessayez dans");
   });
+
+  it("keeps the public bundle renderable when Vercel misses Supabase variables", () => {
+    const supabase = readProjectFile("client/src/lib/supabase.ts");
+    const auth = readProjectFile("client/src/const.ts");
+    const main = readProjectFile("client/src/main.tsx");
+    const hook = readProjectFile("client/src/_core/hooks/useAuth.ts");
+
+    expect(supabase).toContain("export const supabase: SupabaseClientType | null");
+    expect(supabase).not.toContain("throw new Error");
+    expect(auth).toContain("if (!supabase)");
+    expect(auth).toContain("SUPABASE_CONFIG_ERROR");
+    expect(main).toContain("if (supabase)");
+    expect(hook).toContain("if (!supabase) return;");
+  });
 });

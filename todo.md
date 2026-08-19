@@ -398,3 +398,24 @@
 - [x] Committer et pousser le correctif de normalisation des clés de stockage.
 - [x] Vérifier le commit distant et confirmer la synchronisation.
 
+
+## Vérification Vercel du dernier commit
+
+- [x] Comparer le commit GitHub `04e0d29` aux déploiements Vercel enregistrés.
+- [x] Vérifier le statut et la réponse de l’URL Vercel publiée. (Statut GitHub/Vercel `success`; la cible Vercel est protégée par une session Vercel pour l’accès direct.)
+- [x] Confirmer si Vercel est à jour ou indiquer l’action nécessaire.
+
+
+## Vercel : SaaS non visible en ligne
+
+- [ ] Identifier l’URL publique réelle et vérifier sa réponse HTTP et son contenu.
+- [ ] Inspecter les réglages Vercel de protection, build output, rewrites et point d’entrée.
+- [ ] Corriger la configuration nécessaire et valider `/`, `/studio`, `/create` et `/subscription`.
+- [ ] Enregistrer un checkpoint, synchroniser GitHub et expliquer l’URL publique à utiliser.
+
+
+## Vercel production blank page
+
+ - [x] Fix the blank Vercel page caused by fatal Supabase client initialization when frontend environment variables are missing or unresolved.
+ - [x] Add regression coverage proving the app entry remains renderable without Supabase configuration and reports a clear French authentication configuration error.
+- [ ] Rebuild and verify the Vercel production page, then synchronize the final fix to GitHub.

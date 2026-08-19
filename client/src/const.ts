@@ -1,4 +1,4 @@
-import { supabase } from "@/lib/supabase";
+import { SUPABASE_CONFIG_ERROR, supabase } from "@/lib/supabase";
 
 export { COOKIE_NAME, ONE_YEAR_MS } from "@shared/const";
 
@@ -30,6 +30,10 @@ export const startLogin = async (providedEmail?: string): Promise<AuthActionResu
     return { ok: false, message: "Veuillez saisir une adresse e-mail pour continuer." };
   }
 
+  if (!supabase) {
+    return { ok: false, message: SUPABASE_CONFIG_ERROR };
+  }
+
   const { error } = await supabase.auth.signInWithOtp({
     email,
     options: {
@@ -53,6 +57,10 @@ export const startPasswordRecovery = async (providedEmail?: string): Promise<Aut
   const email = (providedEmail ?? window.prompt("Entrez votre adresse e-mail pour réinitialiser votre mot de passe :"))?.trim();
   if (!email) {
     return { ok: false, message: "Veuillez saisir une adresse e-mail pour réinitialiser votre mot de passe." };
+  }
+
+  if (!supabase) {
+    return { ok: false, message: SUPABASE_CONFIG_ERROR };
   }
 
   const { error } = await supabase.auth.resetPasswordForEmail(email, {
