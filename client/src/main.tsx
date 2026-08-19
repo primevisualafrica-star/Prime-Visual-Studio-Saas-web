@@ -7,6 +7,7 @@ import superjson from "superjson";
 import App from "./App";
 import { supabase } from "@/lib/supabase";
 import { startLogin } from "./const";
+import { installGlobalErrorMonitoring } from "@/lib/errorMonitoring";
 import "./index.css";
 
 const queryClient = new QueryClient();
@@ -79,6 +80,8 @@ const trpcClient = trpc.createClient({
     }),
   ],
 });
+
+installGlobalErrorMonitoring();
 
 createRoot(document.getElementById("root")!).render(
   <trpc.Provider client={trpcClient} queryClient={queryClient}>

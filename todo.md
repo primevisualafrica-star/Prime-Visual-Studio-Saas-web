@@ -420,3 +420,11 @@
  - [x] Add regression coverage proving the app entry remains renderable without Supabase configuration and reports a clear French authentication configuration error.
 - [x] Rebuild and verify the Vercel production page, then synchronize the final fix to GitHub.
  - [x] Fix the existing footer test's non-file URL path resolution so the full Vitest suite passes in the current runner.
+
+## Production follow-up requested
+
+- [ ] Configure and verify Supabase frontend variables in the production deployment for authentication and subscriptions.
+- [ ] Complete a real authenticated generation test using a newly uploaded product image and record the outcome without fabricating success.
+- [ ] Prepare and configure a custom domain and frontend error monitoring, documenting any user-owned DNS, domain, or monitoring credentials required.
+- [x] Exclude custom-domain setup from this follow-up at the user's request; retain the default Manus/Vercel URL.
+- [x] Synchronize the latest Supabase configuration and frontend error-monitoring changes to `Prime-Visual-Studio-Saas-web` and verify the remote commit.

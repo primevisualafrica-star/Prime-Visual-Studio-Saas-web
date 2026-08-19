@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import { reportFrontendError } from "@/lib/errorMonitoring";
 import { AlertTriangle, RotateCcw } from "lucide-react";
 import { Component, ReactNode } from "react";
 
@@ -18,6 +19,7 @@ class ErrorBoundary extends Component<Props, State> {
   }
 
   static getDerivedStateFromError(error: Error): State {
+    reportFrontendError(error, "error-boundary");
     return { hasError: true, error };
   }
 
