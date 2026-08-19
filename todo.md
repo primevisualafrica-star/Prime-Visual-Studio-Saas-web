@@ -394,7 +394,7 @@
 
 ## Synchronisation GitHub du correctif de génération
 
-- [ ] Vérifier l’état local, le remote `github` et la branche `main`.
-- [ ] Committer et pousser le correctif de normalisation des clés de stockage.
-- [ ] Vérifier le commit distant et confirmer la synchronisation.
+- [x] Vérifier l’état local, le remote `github` et la branche `main`.
+- [x] Committer et pousser le correctif de normalisation des clés de stockage.
+- [x] Vérifier le commit distant et confirmer la synchronisation.
 
