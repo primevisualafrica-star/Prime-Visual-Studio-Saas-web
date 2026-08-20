@@ -61,6 +61,7 @@ describe("authentication dialog button flow", () => {
     expect(auth).toContain("if (!supabase)");
     expect(auth).toContain("SUPABASE_CONFIG_ERROR");
     expect(main).toContain("if (supabase)");
-    expect(hook).toContain("if (!supabase) return;");
+    expect(hook).toContain("if (!supabase) {");
+    expect(hook).toContain("setSupabaseSessionReady(true)");
   });
 });

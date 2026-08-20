@@ -454,4 +454,11 @@
 - [x] Add an explicit account-creation mode with confirmation-link messaging for new users.
 - [x] Test and publish the revised sign-in/sign-up flow with French error handling.
 
-- [ ] Synchronize the latest direct-password authentication changes to `Prime-Visual-Studio-Saas-web` and verify the remote commit.
+- [x] Synchronize the latest direct-password authentication changes to `Prime-Visual-Studio-Saas-web` and verify the remote commit: `46e2ea9287c2679cf7b8eae23e196d6b73fff7ac`.
+
+- [ ] Verify direct password login on the live production site and confirm the authenticated landing-page account state.
+
+- [x] Persist the authenticated Supabase session across browser refreshes and reopenings through Supabase session hydration and auth-state listeners.
+- [x] Show the signed-in user profile in the production navigation and clear the session on logout; live manual credential verification remains separate.
+
+- [x] Validate and push the session-persistence/profile-menu fix to `Prime-Visual-Studio-Saas-web` and verify the remote commit `46e2ea9287c2679cf7b8eae23e196d6b73fff7ac`.
