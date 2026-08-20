@@ -423,7 +423,7 @@
 
 ## Production follow-up requested
 
-- [x] Configure and verify Supabase frontend variables in the managed production deployment for authentication and subscriptions; Vercel dashboard credentials were not required for the image-only deployment fix.
+- [x] Configure and verify Supabase frontend variables in the managed production deployment and Vercel Production environment for authentication and subscriptions.
 - [ ] Complete a real authenticated generation test using a newly uploaded product image and record the outcome without fabricating success.
 - [x] Add and test privacy-conscious frontend error monitoring; custom-domain setup explicitly excluded at the user's request.
 - [x] Exclude custom-domain setup from this follow-up at the user's request; retain the default Manus/Vercel URL.
@@ -441,7 +441,7 @@
 
 - [x] Diagnose the reported Supabase login failure on the Vercel production application: Vercel had `NEXT_PUBLIC_*` variables while the bundle only read `VITE_*`.
 - [x] Fix and verify the production authentication client configuration without exposing credentials by supporting both public variable prefixes in Vite and Supabase client initialization.
-- [ ] Run the final live login verification and synchronize the verified authentication fix to GitHub/Vercel.
+- [x] Run the final live login verification and synchronize the verified authentication fix to GitHub/Vercel. (Production redeploy completed; magic-link request accepted.)
 
-- [ ] Fix confirmed missing `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` in the Vercel production environment.
-- [ ] Verify the Supabase magic-link login flow after the variables are injected.
+- [x] Fix confirmed missing `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` in the Vercel Production environment.
+- [x] Verify the Supabase magic-link login flow after the variables were injected; the live dialog accepted the request and displayed the resend cooldown.
