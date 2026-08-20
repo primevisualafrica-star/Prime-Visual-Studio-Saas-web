@@ -453,3 +453,5 @@
 - [x] Add immediate password sign-in for existing subscribers without sending a redirect link.
 - [x] Add an explicit account-creation mode with confirmation-link messaging for new users.
 - [x] Test and publish the revised sign-in/sign-up flow with French error handling.
+
+- [ ] Synchronize the latest direct-password authentication changes to `Prime-Visual-Studio-Saas-web` and verify the remote commit.
