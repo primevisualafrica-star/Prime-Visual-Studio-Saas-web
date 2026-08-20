@@ -43,7 +43,7 @@ describe("authentication dialog button flow", () => {
     const dialog = readProjectFile("client/src/components/AuthDialog.tsx");
     expect(auth).toContain("signInWithPassword");
     expect(auth).toContain("export const startSignup");
-    expect(auth).toContain("emailRedirectTo: window.location.origin");
+    expect(auth).toContain("emailRedirectTo: confirmationRedirect");
     expect(dialog).toContain("Connectez-vous immédiatement");
     expect(dialog).toContain("Créer un compte");
     expect(dialog).toContain('type={showPassword ? "text" : "password"}');
@@ -57,7 +57,7 @@ describe("authentication dialog button flow", () => {
     const auth = readProjectFile("client/src/const.ts");
     const dialog = readProjectFile("client/src/components/AuthDialog.tsx");
     expect(auth).toContain("startSignup");
-    expect(auth).toContain("emailRedirectTo: window.location.origin");
+    expect(auth).toContain("emailRedirectTo: confirmationRedirect");
     expect(dialog).toContain("Vérifiez votre boîte e-mail");
   });
 

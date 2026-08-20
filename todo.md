@@ -465,3 +465,9 @@
 
 - [x] Verify that new-account submission requests a Supabase confirmation link after email and password entry through the `startSignup` path and redirect configuration; live inbox delivery remains a user-side check.
 - [x] Add accessible eye-icon show/hide controls to password fields and verify the interaction with regression coverage, keyboard labels, focus styling, and `aria-pressed`.
+
+- [ ] Diagnose why Supabase confirmation emails are not reaching new users and verify the signup response without fabricating delivery success.
+- [ ] Correct the signup confirmation-link request or surface the remaining Supabase email-provider/rate-limit configuration clearly.
+
+- [ ] Investigate why the confirmation email still does not arrive after signup and capture the exact Supabase response or delivery limitation.
+- [x] Improve French signup guidance for spam, rate limits, existing accounts, and SMTP/provider issues if the application cannot resolve delivery directly.

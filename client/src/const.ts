@@ -9,6 +9,12 @@ const DEFAULT_AUTH_RETRY_SECONDS = 60;
 function normalizeAuthError(message: string): AuthActionResult {
   const normalized = message.toLowerCase();
   const isRateLimited = normalized.includes("rate limit") || normalized.includes("too many") || normalized.includes("over_email_send_rate_limit");
+  if (normalized.includes("user already registered") || normalized.includes("already been registered")) {
+    return { ok: false, message: "Cette adresse possède déjà un compte. Utilisez « Se connecter » avec votre mot de passe, ou « Mot de passe oublié ? » pour en créer un nouveau." };
+  }
+  if (normalized.includes("smtp") || normalized.includes("email provider") || normalized.includes("mail service")) {
+    return { ok: false, message: "Supabase ne peut pas envoyer l’e-mail actuellement. Vérifiez le fournisseur SMTP du projet ou réessayez plus tard." };
+  }
   if (!isRateLimited) return { ok: false, message };
 
   const secondsMatch = message.match(/(\d+)\s*(?:seconds?|secondes?)/i);
@@ -51,17 +57,18 @@ export const startSignup = async (providedEmail?: string, providedPassword?: str
   if (password.length < 8) return { ok: false, message: "Votre mot de passe doit contenir au moins 8 caractères." };
   if (!supabase) return { ok: false, message: SUPABASE_CONFIG_ERROR };
 
+  const confirmationRedirect = new URL("/", window.location.origin).toString();
   const { data, error } = await supabase.auth.signUp({
     email,
     password,
-    options: { emailRedirectTo: window.location.origin },
+    options: { emailRedirectTo: confirmationRedirect },
   });
   if (error) {
     const normalized = normalizeAuthError(error.message);
     return normalized.message === error.message ? { ok: false, message: `Création du compte impossible : ${error.message}` } : normalized;
   }
   if (!data.session) {
-    return { ok: true, retryAfterSeconds: DEFAULT_AUTH_RETRY_SECONDS, message: "Votre compte est créé. Vérifiez votre e-mail pour confirmer votre adresse, puis revenez sur la page d’accueil pour vous connecter." };
+    return { ok: true, retryAfterSeconds: DEFAULT_AUTH_RETRY_SECONDS, message: "La demande de confirmation a été acceptée. Vérifiez la boîte de réception et les dossiers spam/promotions. Si cette adresse possède déjà un compte, aucun nouveau lien ne sera forcément renvoyé ; utilisez alors « Se connecter » ou « Mot de passe oublié ? »." };
   }
   return { ok: true, message: "Compte créé. Bienvenue sur Prime Visual Africa." };
 };
