@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
+import { Eye, EyeOff } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
@@ -27,6 +28,7 @@ type AuthDialogProps = { open: boolean; mode?: "login" | "recovery"; onOpenChang
 export default function AuthDialog({ open, mode = "login", onOpenChange }: AuthDialogProps) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [activeMode, setActiveMode] = useState<AuthMode>(mode);
   const [status, setStatus] = useState<AuthStatus>(null);
   const [submitting, setSubmitting] = useState(false);
@@ -38,6 +40,7 @@ export default function AuthDialog({ open, mode = "login", onOpenChange }: AuthD
     setStatus(null);
     setEmail("");
     setPassword("");
+    setShowPassword(false);
     setCooldown(0);
   }, [open, mode]);
 
@@ -95,7 +98,7 @@ export default function AuthDialog({ open, mode = "login", onOpenChange }: AuthD
         </DialogHeader>
         <form onSubmit={handleSubmit} className="space-y-5">
           <div className="space-y-2"><Label htmlFor="auth-email">Adresse e-mail</Label><Input id="auth-email" name="email" type="email" autoComplete="email" placeholder="vous@exemple.com" value={email} onChange={(event) => setEmail(event.target.value)} required disabled={submitting} className="h-12 rounded-2xl border-[#241846]/15 bg-white" /></div>
-          {!isRecovery && <div className="space-y-2"><Label htmlFor="auth-password">Mot de passe</Label><Input id="auth-password" name="password" type="password" autoComplete={isSignup ? "new-password" : "current-password"} placeholder="8 caractères minimum" value={password} onChange={(event) => setPassword(event.target.value)} required minLength={8} disabled={submitting} className="h-12 rounded-2xl border-[#241846]/15 bg-white" /></div>}
+          {!isRecovery && <div className="space-y-2"><Label htmlFor="auth-password">Mot de passe</Label><div className="relative"><Input id="auth-password" name="password" type={showPassword ? "text" : "password"} autoComplete={isSignup ? "new-password" : "current-password"} placeholder="8 caractères minimum" value={password} onChange={(event) => setPassword(event.target.value)} required minLength={8} disabled={submitting} className="h-12 rounded-2xl border-[#241846]/15 bg-white pr-12" /><button type="button" aria-label={showPassword ? "Masquer le mot de passe" : "Afficher le mot de passe"} aria-pressed={showPassword} onClick={() => setShowPassword((visible) => !visible)} disabled={submitting} className="absolute inset-y-0 right-3 flex w-10 items-center justify-center rounded-full text-[#241846]/60 transition-colors hover:bg-[#241846]/5 hover:text-[#241846] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d7aa3f] disabled:opacity-50">{showPassword ? <EyeOff className="h-5 w-5" aria-hidden="true" /> : <Eye className="h-5 w-5" aria-hidden="true" />}</button></div></div>}
           {status && <p role="status" className={`rounded-2xl px-4 py-3 text-sm ${status.type === "error" ? "bg-red-50 text-red-700" : "bg-emerald-50 text-emerald-700"}`}>{status.message}</p>}
           <DialogFooter className="gap-3 sm:flex-col">
             <Button type="submit" disabled={submitting || (isRecovery && cooldown > 0)} className="h-12 w-full rounded-full bg-[#241846] text-white hover:bg-[#39286b]">{submitting ? "Traitement en cours…" : isRecovery ? cooldown > 0 ? cooldownLabel : "Envoyer le lien" : isSignup ? cooldown > 0 ? cooldownLabel : "Créer mon compte" : "Se connecter"}</Button>

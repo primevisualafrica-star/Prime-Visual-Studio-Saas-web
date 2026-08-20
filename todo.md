@@ -462,3 +462,6 @@
 - [x] Show the signed-in user profile in the production navigation and clear the session on logout; live manual credential verification remains separate.
 
 - [x] Validate and push the session-persistence/profile-menu fix to `Prime-Visual-Studio-Saas-web` and verify the remote commit `46e2ea9287c2679cf7b8eae23e196d6b73fff7ac`.
+
+- [x] Verify that new-account submission requests a Supabase confirmation link after email and password entry through the `startSignup` path and redirect configuration; live inbox delivery remains a user-side check.
+- [x] Add accessible eye-icon show/hide controls to password fields and verify the interaction with regression coverage, keyboard labels, focus styling, and `aria-pressed`.

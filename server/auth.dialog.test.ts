@@ -46,8 +46,19 @@ describe("authentication dialog button flow", () => {
     expect(auth).toContain("emailRedirectTo: window.location.origin");
     expect(dialog).toContain("Connectez-vous immédiatement");
     expect(dialog).toContain("Créer un compte");
-    expect(dialog).toContain('type="password"');
+    expect(dialog).toContain('type={showPassword ? "text" : "password"}');
+    expect(dialog).toContain("Afficher le mot de passe");
+    expect(dialog).toContain("Masquer le mot de passe");
+    expect(dialog).toContain("aria-pressed={showPassword}");
     expect(auth).not.toContain("signInWithOtp");
+  });
+
+  it("requests confirmation for new accounts with a production-safe callback", () => {
+    const auth = readProjectFile("client/src/const.ts");
+    const dialog = readProjectFile("client/src/components/AuthDialog.tsx");
+    expect(auth).toContain("startSignup");
+    expect(auth).toContain("emailRedirectTo: window.location.origin");
+    expect(dialog).toContain("Vérifiez votre boîte e-mail");
   });
 
   it("keeps the public bundle renderable when Vercel misses Supabase variables", () => {
