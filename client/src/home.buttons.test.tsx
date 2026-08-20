@@ -6,10 +6,12 @@ import Home from "./pages/Home";
 
 const startLogin = vi.fn(() => Promise.resolve({ ok: true, message: "Lien envoyé" }));
 const startPasswordRecovery = vi.fn(() => Promise.resolve({ ok: true, message: "Lien envoyé" }));
+const startSignup = vi.fn(() => Promise.resolve({ ok: true, message: "Compte créé" }));
 
 vi.mock("./const", () => ({
   startLogin: () => startLogin(),
   startPasswordRecovery: () => startPasswordRecovery(),
+  startSignup: () => startSignup(),
 }));
 
 vi.mock("@/_core/hooks/useAuth", () => ({
@@ -33,11 +35,18 @@ describe("landing page button interactions", () => {
   afterEach(() => cleanup());
   beforeEach(() => vi.clearAllMocks());
 
-  async function submitAuthDialog() {
+  async function submitAuthDialog(mode: "login" | "recovery" = "login") {
     fireEvent.change(screen.getByLabelText(/adresse e-mail/i), {
       target: { value: "client@example.com" },
     });
-    fireEvent.click(screen.getByRole("button", { name: /recevoir mon lien|envoyer le lien/i }));
+    if (mode === "login") {
+      fireEvent.change(screen.getByLabelText(/mot de passe/i), {
+        target: { value: "password123" },
+      });
+      fireEvent.click(screen.getByRole("button", { name: /se connecter/i }));
+    } else {
+      fireEvent.click(screen.getByRole("button", { name: /envoyer le lien/i }));
+    }
   }
 
   it("opens the login dialog from the visible CTA and submits login", async () => {
@@ -57,7 +66,7 @@ describe("landing page button interactions", () => {
   it("opens recovery from the explicit header action and submits recovery", async () => {
     render(<Home />);
     fireEvent.click(screen.getAllByRole("button", { name: /mot de passe oublié/i })[0]);
-    await submitAuthDialog();
+    await submitAuthDialog("recovery");
     await waitFor(() => expect(startPasswordRecovery).toHaveBeenCalledTimes(1));
   });
 });

@@ -20,61 +20,61 @@ function normalizeAuthError(message: string): AuthActionResult {
   };
 }
 
-/**
- * Envoie un lien magique Supabase. Le fallback prompt reste disponible pour
- * les intégrations legacy, mais l’interface utilise désormais AuthDialog.
- */
-export const startLogin = async (providedEmail?: string): Promise<AuthActionResult> => {
-  const email = (providedEmail ?? window.prompt("Entrez votre adresse e-mail pour recevoir votre lien de connexion :"))?.trim();
-  if (!email) {
-    return { ok: false, message: "Veuillez saisir une adresse e-mail pour continuer." };
-  }
+function readCredentials(providedEmail?: string, providedPassword?: string) {
+  const email = (providedEmail ?? window.prompt("Entrez votre adresse e-mail :"))?.trim();
+  const password = providedPassword ?? window.prompt("Entrez votre mot de passe :");
+  return { email, password };
+}
 
-  if (!supabase) {
-    return { ok: false, message: SUPABASE_CONFIG_ERROR };
-  }
+/** Connexion immédiate pour les utilisateurs déjà inscrits. Aucun lien n’est envoyé. */
+export const startLogin = async (providedEmail?: string, providedPassword?: string): Promise<AuthActionResult> => {
+  const { email, password } = readCredentials(providedEmail, providedPassword);
+  if (!email || !password) return { ok: false, message: "Veuillez saisir votre e-mail et votre mot de passe pour continuer." };
+  if (!supabase) return { ok: false, message: SUPABASE_CONFIG_ERROR };
 
-  const { error } = await supabase.auth.signInWithOtp({
-    email,
-    options: {
-      emailRedirectTo: window.location.origin,
-    },
-  });
-
+  const { error } = await supabase.auth.signInWithPassword({ email, password });
   if (error) {
     const normalized = normalizeAuthError(error.message);
-    return normalized.message === error.message ? { ok: false, message: `Connexion impossible : ${error.message}` } : normalized;
+    if (normalized.message !== error.message) return normalized;
+    if (error.message.toLowerCase().includes("invalid login credentials")) {
+      return { ok: false, message: "E-mail ou mot de passe incorrect. Utilisez « Mot de passe oublié ? » si vous devez créer un mot de passe." };
+    }
+    return { ok: false, message: `Connexion impossible : ${error.message}` };
   }
+  return { ok: true, message: "Connexion réussie. Bienvenue sur Prime Visual Africa." };
+};
 
-  return {
-    ok: true,
-    retryAfterSeconds: DEFAULT_AUTH_RETRY_SECONDS,
-    message: "Un lien de connexion vient d’être envoyé. Attendez une minute avant de demander un nouveau lien.",
-  };
+/** Création d’un nouveau compte : Supabase peut demander une confirmation e-mail. */
+export const startSignup = async (providedEmail?: string, providedPassword?: string): Promise<AuthActionResult> => {
+  const { email, password } = readCredentials(providedEmail, providedPassword);
+  if (!email || !password) return { ok: false, message: "Veuillez saisir un e-mail et un mot de passe pour créer votre compte." };
+  if (password.length < 8) return { ok: false, message: "Votre mot de passe doit contenir au moins 8 caractères." };
+  if (!supabase) return { ok: false, message: SUPABASE_CONFIG_ERROR };
+
+  const { data, error } = await supabase.auth.signUp({
+    email,
+    password,
+    options: { emailRedirectTo: window.location.origin },
+  });
+  if (error) {
+    const normalized = normalizeAuthError(error.message);
+    return normalized.message === error.message ? { ok: false, message: `Création du compte impossible : ${error.message}` } : normalized;
+  }
+  if (!data.session) {
+    return { ok: true, retryAfterSeconds: DEFAULT_AUTH_RETRY_SECONDS, message: "Votre compte est créé. Vérifiez votre e-mail pour confirmer votre adresse, puis revenez sur la page d’accueil pour vous connecter." };
+  }
+  return { ok: true, message: "Compte créé. Bienvenue sur Prime Visual Africa." };
 };
 
 export const startPasswordRecovery = async (providedEmail?: string): Promise<AuthActionResult> => {
   const email = (providedEmail ?? window.prompt("Entrez votre adresse e-mail pour réinitialiser votre mot de passe :"))?.trim();
-  if (!email) {
-    return { ok: false, message: "Veuillez saisir une adresse e-mail pour réinitialiser votre mot de passe." };
-  }
+  if (!email) return { ok: false, message: "Veuillez saisir une adresse e-mail pour réinitialiser votre mot de passe." };
+  if (!supabase) return { ok: false, message: SUPABASE_CONFIG_ERROR };
 
-  if (!supabase) {
-    return { ok: false, message: SUPABASE_CONFIG_ERROR };
-  }
-
-  const { error } = await supabase.auth.resetPasswordForEmail(email, {
-    redirectTo: window.location.origin,
-  });
-
+  const { error } = await supabase.auth.resetPasswordForEmail(email, { redirectTo: window.location.origin });
   if (error) {
     const normalized = normalizeAuthError(error.message);
     return normalized.message === error.message ? { ok: false, message: `Réinitialisation impossible : ${error.message}` } : normalized;
   }
-
-  return {
-    ok: true,
-    retryAfterSeconds: DEFAULT_AUTH_RETRY_SECONDS,
-    message: "Le lien de réinitialisation vient d’être envoyé. Attendez une minute avant de demander un nouveau lien.",
-  };
+  return { ok: true, retryAfterSeconds: DEFAULT_AUTH_RETRY_SECONDS, message: "Le lien de réinitialisation vient d’être envoyé. Attendez une minute avant de demander un nouveau lien." };
 };

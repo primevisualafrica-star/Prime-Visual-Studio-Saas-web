@@ -34,8 +34,20 @@ describe("authentication dialog button flow", () => {
     expect(auth).toContain("over_email_send_rate_limit");
     expect(auth).toContain("Attendez ${retryAfterSeconds} secondes");
     expect(dialog).toContain("prime-auth-cooldown");
-    expect(dialog).toContain("disabled={submitting || cooldown > 0}");
+    expect(dialog).toContain("disabled={submitting || (isRecovery && cooldown > 0)}");
     expect(dialog).toContain("Réessayez dans");
+  });
+
+  it("uses direct password sign-in and keeps confirmation only for new accounts", () => {
+    const auth = readProjectFile("client/src/const.ts");
+    const dialog = readProjectFile("client/src/components/AuthDialog.tsx");
+    expect(auth).toContain("signInWithPassword");
+    expect(auth).toContain("export const startSignup");
+    expect(auth).toContain("emailRedirectTo: window.location.origin");
+    expect(dialog).toContain("Connectez-vous immédiatement");
+    expect(dialog).toContain("Créer un compte");
+    expect(dialog).toContain('type="password"');
+    expect(auth).not.toContain("signInWithOtp");
   });
 
   it("keeps the public bundle renderable when Vercel misses Supabase variables", () => {

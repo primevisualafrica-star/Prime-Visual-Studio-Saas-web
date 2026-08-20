@@ -32,7 +32,8 @@ describe("Supabase confirmation-link flow", () => {
   });
 
   it("sends both login and recovery links back to the site origin", () => {
-    expect(constSource).toContain("signInWithOtp");
+    expect(constSource).toContain("signUp({");
+    expect(constSource).toContain("signInWithPassword");
     expect(constSource).toContain("emailRedirectTo: window.location.origin");
     expect(constSource).toContain("resetPasswordForEmail");
     expect(constSource).toContain("redirectTo: window.location.origin");

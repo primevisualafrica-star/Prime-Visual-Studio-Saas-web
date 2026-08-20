@@ -449,3 +449,7 @@
 - [x] Update Supabase sign-in/sign-up links to redirect confirmed users to the French landing page with an active session.
 - [x] Handle auth callback, expired-link, and direct-return states with clear French feedback.
 - [x] Add regression tests and publish the verified authentication-flow update.
+
+- [x] Add immediate password sign-in for existing subscribers without sending a redirect link.
+- [x] Add an explicit account-creation mode with confirmation-link messaging for new users.
+- [x] Test and publish the revised sign-in/sign-up flow with French error handling.
