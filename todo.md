@@ -435,6 +435,6 @@
 - [x] Correct the logo asset/layout for desktop and mobile and add regression coverage.
 - [x] Validate, publish, and synchronize the logo correction to Vercel/GitHub.
 
-- [ ] Fix the Vercel landing-page Before/After images by replacing inaccessible relative storage references with stable public asset URLs.
-- [ ] Add regression coverage for the production Before/After image references and verify desktop/mobile rendering.
-- [ ] Push the Before/After image fix to GitHub and publish the verified deployment.
+- [x] Fix the Vercel landing-page Before/After images by replacing inaccessible relative storage references with stable public asset URLs.
+- [x] Add regression coverage for the production Before/After image references and verify desktop/mobile rendering.
+- [x] Push the Before/After image fix to GitHub and publish the verified deployment.
