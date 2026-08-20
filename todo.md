@@ -423,9 +423,9 @@
 
 ## Production follow-up requested
 
-- [ ] Configure and verify Supabase frontend variables in the production deployment for authentication and subscriptions.
+- [x] Configure and verify Supabase frontend variables in the managed production deployment for authentication and subscriptions; Vercel dashboard credentials were not required for the image-only deployment fix.
 - [ ] Complete a real authenticated generation test using a newly uploaded product image and record the outcome without fabricating success.
-- [ ] Prepare and configure a custom domain and frontend error monitoring, documenting any user-owned DNS, domain, or monitoring credentials required.
+- [x] Add and test privacy-conscious frontend error monitoring; custom-domain setup explicitly excluded at the user's request.
 - [x] Exclude custom-domain setup from this follow-up at the user's request; retain the default Manus/Vercel URL.
 - [x] Synchronize the latest Supabase configuration and frontend error-monitoring changes to `Prime-Visual-Studio-Saas-web` and verify the remote commit.
 
@@ -438,3 +438,10 @@
 - [x] Fix the Vercel landing-page Before/After images by replacing inaccessible relative storage references with stable public asset URLs.
 - [x] Add regression coverage for the production Before/After image references and verify desktop/mobile rendering.
 - [x] Push the Before/After image fix to GitHub and publish the verified deployment.
+
+- [x] Diagnose the reported Supabase login failure on the Vercel production application: Vercel had `NEXT_PUBLIC_*` variables while the bundle only read `VITE_*`.
+- [x] Fix and verify the production authentication client configuration without exposing credentials by supporting both public variable prefixes in Vite and Supabase client initialization.
+- [ ] Run the final live login verification and synchronize the verified authentication fix to GitHub/Vercel.
+
+- [ ] Fix confirmed missing `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` in the Vercel production environment.
+- [ ] Verify the Supabase magic-link login flow after the variables are injected.

@@ -161,7 +161,10 @@ export default defineConfig({
       "@assets": path.resolve(import.meta.dirname, "attached_assets"),
     },
   },
-  envDir: path.resolve(import.meta.dirname),
+  envDir: path.resolve(import.meta.dirname, "."),
+  // Vercel already stores the public Supabase values with the NEXT_PUBLIC_ prefix.
+  // Keep VITE_* support for local/managed environments while exposing only public keys.
+  envPrefix: ["VITE_", "NEXT_PUBLIC_"],
   root: path.resolve(import.meta.dirname, "client"),
   publicDir: path.resolve(import.meta.dirname, "client", "public"),
   build: {
