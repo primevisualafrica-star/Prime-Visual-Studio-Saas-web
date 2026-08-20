@@ -445,3 +445,7 @@
 
 - [x] Fix confirmed missing `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` in the Vercel Production environment.
 - [x] Verify the Supabase magic-link login flow after the variables were injected; the live dialog accepted the request and displayed the resend cooldown.
+
+- [x] Update Supabase sign-in/sign-up links to redirect confirmed users to the French landing page with an active session.
+- [x] Handle auth callback, expired-link, and direct-return states with clear French feedback.
+- [x] Add regression tests and publish the verified authentication-flow update.
