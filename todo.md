@@ -6655,7 +6655,16 @@
 - [x] Prevent already registered or confirmed addresses from restarting signup; preserve direct password sign-in and recovery.
 - [x] Add callback, session, and duplicate-signup regression coverage.
 - [x] Pass focused tests, full Vitest suite (22 files / 49 tests), TypeScript validation, and production build.
-- [ ] Publish checkpoint and request live retest of profile visibility and direct sign-in.
+- [x] Publish checkpoint and request live retest of profile visibility and direct sign-in.
 - [ ] Do not mark live profile visibility verified until the user confirms the production result.
 
 *Source: current implementation and validation run on 2026-08-21.*
+
+## Back navigation icon — current request
+
+- [x] Audit authenticated and internal pages for a consistent back-navigation location.
+- [x] Add an accessible back icon with tooltip/label and browser-history fallback.
+- [x] Verify the icon is visible and usable on mobile and desktop internal pages.
+- [x] Run regression tests, typecheck, production build, and publish the navigation update.
+
+*Source: user requests an always-available icon to return to the previous page.*

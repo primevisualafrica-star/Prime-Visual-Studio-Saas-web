@@ -256,31 +256,27 @@ function DashboardLayoutContent({
       </div>
 
       <SidebarInset>
-        {isMobile && (
-          <div className="flex h-14 items-center justify-between border-b bg-background/95 px-3 backdrop-blur supports-[backdrop-filter]:backdrop-blur sticky top-0 z-40">
-            <div className="flex items-center gap-2">
-              <SidebarTrigger className="h-10 w-10 rounded-xl bg-background" />
-              {location !== "/dashboard" && (
-                <button
-                  type="button"
-                  onClick={goBack}
-                  aria-label="Retour à la page précédente"
-                  title="Retour à la page précédente"
-                  className="grid h-10 w-10 place-items-center rounded-xl bg-background text-foreground transition-colors hover:bg-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                >
-                  <ArrowLeft className="h-4 w-4" aria-hidden="true" />
-                </button>
-              )}
-              <div className="flex items-center gap-3">
-                <div className="flex flex-col gap-1">
-                  <span className="tracking-tight text-foreground">
-                    {activeMenuItem?.label ?? "Menu"}
-                  </span>
-                </div>
+        <div className="sticky top-0 z-40 flex h-14 items-center justify-between border-b bg-background/95 px-3 backdrop-blur supports-[backdrop-filter]:backdrop-blur sm:px-6">
+          <div className="flex items-center gap-2">
+            {isMobile && <SidebarTrigger className="h-10 w-10 rounded-xl bg-background" />}
+            <button
+              type="button"
+              onClick={goBack}
+              aria-label="Retour à la page précédente"
+              title="Retour à la page précédente"
+              className="grid h-10 w-10 place-items-center rounded-xl bg-background text-foreground transition-colors hover:bg-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            >
+              <ArrowLeft className="h-4 w-4" aria-hidden="true" />
+            </button>
+            <div className="flex items-center gap-3">
+              <div className="flex flex-col gap-1">
+                <span className="tracking-tight text-foreground">
+                  {activeMenuItem?.label ?? "Menu"}
+                </span>
               </div>
             </div>
           </div>
-        )}
+        </div>
         <main className="min-w-0 flex-1 px-3 py-4 pb-8 sm:p-6">{children}</main>
       </SidebarInset>
     </>
