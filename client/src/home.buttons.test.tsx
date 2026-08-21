@@ -86,4 +86,21 @@ describe("landing page button interactions", () => {
     await submitAuthDialog("recovery");
     await waitFor(() => expect(startPasswordRecovery).toHaveBeenCalledTimes(1));
   });
+
+  it("opens the mobile menu and exposes working section links", () => {
+    render(<Home />);
+    fireEvent.click(screen.getByRole("button", { name: /ouvrir le menu/i }));
+    expect(screen.getByRole("navigation", { name: /navigation mobile/i })).toBeInTheDocument();
+    expect(within(screen.getByRole("navigation", { name: /navigation mobile/i })).getByRole("link", { name: "Tarifs" })).toHaveAttribute("href", "#tarifs");
+    fireEvent.click(screen.getByRole("button", { name: /fermer le menu/i }));
+    expect(screen.queryByRole("navigation", { name: /navigation mobile/i })).not.toBeInTheDocument();
+  });
+
+  it("routes the authenticated mobile studio action directly to the studio", () => {
+    mockAuth.user = { name: "Client confirmé", email: "client@example.com" };
+    render(<Home />);
+    fireEvent.click(screen.getByRole("button", { name: /ouvrir le menu/i }));
+    fireEvent.click(screen.getByRole("button", { name: /ouvrir mon studio/i }));
+    expect(mockAuth.setLocation).toHaveBeenCalledWith("/create");
+  });
 });

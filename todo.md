@@ -6806,3 +6806,11 @@
 - [x] Fix completed gallery cards that render broken thumbnails when generated media URLs are empty, malformed, or unavailable.
 - [x] Add regression tests for generated/original URL fallback and gallery media normalization.
 - [x] Verify the authenticated gallery in production, run tests/typecheck/build, and publish the correction.
+
+## Mobile responsiveness and button flows — follow-up
+
+- [x] Audit landing, authentication, studio, gallery, subscription, and profile layouts at mobile widths.
+- [x] Fix mobile overflow, visibility, spacing, and touch-target issues.
+- [x] Verify and repair all visible navigation and action buttons across the main flows.
+- [x] Add or update responsive and button interaction regression tests.
+- [x] Validate mobile and desktop screenshots, run tests/typecheck/build, and publish the update.
