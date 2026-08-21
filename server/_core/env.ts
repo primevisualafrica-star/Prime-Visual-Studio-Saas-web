@@ -7,6 +7,18 @@ export const ENV = {
   isProduction: process.env.NODE_ENV === "production",
   forgeApiUrl: process.env.BUILT_IN_FORGE_API_URL ?? "",
   forgeApiKey: process.env.BUILT_IN_FORGE_API_KEY ?? "",
-  supabaseUrl: process.env.VITE_SUPABASE_URL ?? "",
-  supabaseAnonKey: process.env.VITE_SUPABASE_ANON_KEY ?? "",
+  // Vercel deployments may expose public Supabase values under NEXT_PUBLIC_*
+  // while the Manus runtime uses VITE_*; accept both so server-side bearer
+  // validation uses the same project as the browser session.
+  supabaseUrl:
+    process.env.VITE_SUPABASE_URL ??
+    process.env.NEXT_PUBLIC_SUPABASE_URL ??
+    process.env.SUPABASE_URL ??
+    "",
+  supabaseAnonKey:
+    process.env.VITE_SUPABASE_ANON_KEY ??
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ??
+    process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ??
+    process.env.SUPABASE_ANON_KEY ??
+    "",
 };

@@ -6680,8 +6680,26 @@
 
 ## GitHub synchronization — current request
 
-- [ ] Inspect the local branch, remote, and latest validated commit.
-- [ ] Commit and push the latest update to `primevisualafrica-star/Prime-Visual-Studio-Saas-web`.
-- [ ] Verify the remote branch and commit after pushing.
+- [x] Inspect the local branch, remote, and latest validated commit.
+- [x] Commit and push the latest update to `primevisualafrica-star/Prime-Visual-Studio-Saas-web`.
+- [x] Verify the remote branch and commit after pushing.
 
 *Source: user requests the latest update be pushed to the GitHub repository.*
+
+## Vercel deployment update — current request
+
+- [x] Inspect the latest GitHub commit and available Vercel deployment configuration/status.
+- [x] Ensure Vercel deploys the latest validated commit from `main`.
+- [x] Verify the live Vercel URL, deployment status, and current production content.
+
+*Source: user requests the Vercel deployment be updated.*
+
+## Image generation failure — current request
+
+- [x] Inspect Studio upload/generation handlers, provider responses, storage proxy logs, and production deployment behavior.
+- [x] Reproduce the failure and fix the generation path without charging credits on failed requests.
+- [x] Add or update regression tests for upload URL resolution, provider submission, generated-result storage, and failure refunds.
+- [x] Run the full validation suite and publish the tested correction.
+- [ ] Retest one real authenticated generation with a newly uploaded image in production.
+
+*Source: user reports that image generation does not work.*
