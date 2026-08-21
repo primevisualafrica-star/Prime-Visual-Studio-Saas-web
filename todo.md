@@ -6668,3 +6668,12 @@
 - [x] Run regression tests, typecheck, production build, and publish the navigation update.
 
 *Source: user requests an always-available icon to return to the previous page.*
+
+## Authenticated primary CTA — current request
+
+- [x] Audit the first landing-page creation CTA and current Supabase auth state handling.
+- [x] Route authenticated users directly to `/create` without opening the sign-in dialog.
+- [x] Preserve the sign-in dialog for visitors who are not authenticated.
+- [x] Add regression coverage, run tests/typecheck/build, and publish the correction.
+
+*Source: user reports that a signed-in user is asked to sign in again when clicking « Créer mon premier visuel ».*

@@ -15,6 +15,15 @@ describe("button destinations and feedback", () => {
     expect(app).toContain('path="/dashboard"');
   });
 
+  it("routes the primary creation CTA for authenticated users without reopening sign-in", () => {
+    const home = readProjectFile("client/src/pages/Home.tsx");
+    expect(home).toContain("const openCreateStudio = () =>");
+    expect(home).toContain('setLocation("/create")');
+    expect(home).toContain("if (user)");
+    expect(home).toContain("openLogin();");
+    expect(home).toContain("onClick={openCreateStudio}");
+  });
+
   it("defines explicit authentication feedback instead of silent no-op actions", () => {
     const auth = readProjectFile("client/src/const.ts");
     expect(auth).toMatch(/supabase\.auth\.(signInWithOtp|resetPasswordForEmail)/);

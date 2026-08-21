@@ -7,6 +7,10 @@ import Home from "./pages/Home";
 const startLogin = vi.fn(() => Promise.resolve({ ok: true, message: "Lien envoyé" }));
 const startPasswordRecovery = vi.fn(() => Promise.resolve({ ok: true, message: "Lien envoyé" }));
 const startSignup = vi.fn(() => Promise.resolve({ ok: true, message: "Compte créé" }));
+const mockAuth = vi.hoisted(() => ({
+  user: null as null | { name: string; email: string },
+  setLocation: vi.fn(),
+}));
 
 vi.mock("./const", () => ({
   startLogin: () => startLogin(),
@@ -16,7 +20,7 @@ vi.mock("./const", () => ({
 
 vi.mock("@/_core/hooks/useAuth", () => ({
   useAuth: () => ({
-    user: null,
+    user: mockAuth.user,
     loading: false,
     isAuthenticated: false,
     error: null,
@@ -29,11 +33,15 @@ vi.mock("wouter", () => ({
   Link: ({ href, children, ...props }: { href: string; children: React.ReactNode }) => (
     <a href={href} {...props}>{children}</a>
   ),
+  useLocation: () => ["/", mockAuth.setLocation],
 }));
 
 describe("landing page button interactions", () => {
   afterEach(() => cleanup());
-  beforeEach(() => vi.clearAllMocks());
+  beforeEach(() => {
+    vi.clearAllMocks();
+    mockAuth.user = null;
+  });
 
   async function submitAuthDialog(mode: "login" | "recovery" = "login") {
     const dialog = within(screen.getByRole("dialog"));
@@ -55,6 +63,14 @@ describe("landing page button interactions", () => {
     fireEvent.click(screen.getByRole("button", { name: /commencer/i }));
     await submitAuthDialog();
     await waitFor(() => expect(startLogin).toHaveBeenCalledTimes(1));
+  });
+
+  it("routes an authenticated user directly to the studio from the primary creation CTA", () => {
+    mockAuth.user = { name: "Client confirmé", email: "client@example.com" };
+    render(<Home />);
+    fireEvent.click(screen.getAllByRole("button", { name: /créer mon premier visuel/i })[0]);
+    expect(mockAuth.setLocation).toHaveBeenCalledWith("/create");
+    expect(startLogin).not.toHaveBeenCalled();
   });
 
   it("opens the login dialog from the header sign-in button and submits login", async () => {
