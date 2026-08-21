@@ -6814,3 +6814,9 @@
 - [x] Verify and repair all visible navigation and action buttons across the main flows.
 - [x] Add or update responsive and button interaction regression tests.
 - [x] Validate mobile and desktop screenshots, run tests/typecheck/build, and publish the update.
+
+## Mobile primary image upload — follow-up
+
+- [x] Make the primary mobile upload action open the phone photo gallery directly.
+- [x] Preserve desktop file-picker behavior and add upload interaction regression coverage.
+- [x] Validate mobile upload selection, run tests/typecheck/build, and publish the update.

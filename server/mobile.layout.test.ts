@@ -27,5 +27,11 @@ describe("mobile layout safeguards", () => {
     expect(home).toContain('className="marketing-page min-h-screen');
     expect(home).toContain('className="marketing-page');
   });
+
+  it("opens the mobile photo-library picker for the primary product upload", () => {
+    const studio = readProjectFile("client/src/pages/Studio.tsx");
+    expect(studio).toContain('id="product-image-upload" type="file" accept="image/jpeg,image/png,image/webp"');
+    expect(studio).not.toContain('id="product-image-upload" type="file" accept="image/jpeg,image/png,image/webp" capture=');
+  });
 });
 
