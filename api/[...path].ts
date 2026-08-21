@@ -24,10 +24,16 @@ function createVercelApp() {
 
   registerStorageProxy(instance);
   registerOAuthRoutes(instance);
-  instance.use(
-    "/api/trpc",
-    createExpressMiddleware({ router: appRouter, createContext }),
-  );
+  const trpcMiddleware = createExpressMiddleware({
+    router: appRouter,
+    createContext,
+  });
+
+  // Depending on Vercel's function path normalization, the catch-all handler
+  // receives either `/api/trpc/*` or `/trpc/*`. Support both forms so the
+  // public Vercel deployment cannot fall through to an HTML/404 response.
+  instance.use("/api/trpc", trpcMiddleware);
+  instance.use("/trpc", trpcMiddleware);
 
   return instance;
 }

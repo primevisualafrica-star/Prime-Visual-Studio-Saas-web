@@ -6746,3 +6746,12 @@
 - [x] Validate the public Vercel Studio query path and publish the correction.
 
 *Finding: the Vercel deployment is static-only; `/api/trpc/*` currently returns the SPA HTML with HTTP 200, leaving the authenticated Studio on skeleton loading.*
+
+## Vercel API path normalization correction
+
+- [x] Support both `/api/trpc/*` and Vercel function-relative `/trpc/*` paths in the serverless handler.
+- [x] Add regression coverage for both tRPC route forms.
+- [x] Pass 24 Vitest files / 53 tests, TypeScript validation, and production build.
+- [ ] Sync the correction to GitHub and verify the refreshed Vercel endpoint.
+
+*Source: deployed API function existed but returned 404 because Vercel normalized the catch-all function path.*
