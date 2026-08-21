@@ -6800,3 +6800,9 @@
 - [x] Validate the gallery card on Vercel mobile/desktop, then publish the correction.
 
 *Source: user confirms the broken image is from the Vercel site.*
+
+## Production gallery thumbnails — follow-up
+
+- [x] Fix completed gallery cards that render broken thumbnails when generated media URLs are empty, malformed, or unavailable.
+- [x] Add regression tests for generated/original URL fallback and gallery media normalization.
+- [x] Verify the authenticated gallery in production, run tests/typecheck/build, and publish the correction.

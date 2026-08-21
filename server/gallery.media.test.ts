@@ -35,4 +35,25 @@ describe("normalizeGenerationMedia", () => {
 
     expect(normalized.generatedImageUrl).toBe(generation.generatedImageUrl);
   });
+
+  it("ignores empty media fields and removes a duplicated storage prefix", () => {
+    const normalized = normalizeGenerationMedia({
+      ...generation,
+      originalImageKey: "/manus-storage/users/7/original.jpg",
+      generatedImageKey: "",
+      generatedImageUrl: "   ",
+    });
+
+    expect(normalized.originalImageUrl).toBe("/manus-storage/users/7/original.jpg");
+    expect(normalized.generatedImageUrl).toBeUndefined();
+  });
+
+  it("normalizes an encoded storage key without double-encoding it", () => {
+    const normalized = normalizeGenerationMedia({
+      ...generation,
+      generatedImageKey: "users/7/generated/final%20image.jpg",
+    });
+
+    expect(normalized.generatedImageUrl).toBe("/manus-storage/users/7/generated/final%20image.jpg");
+  });
 });
