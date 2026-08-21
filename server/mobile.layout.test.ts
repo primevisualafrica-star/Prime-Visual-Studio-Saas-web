@@ -33,5 +33,12 @@ describe("mobile layout safeguards", () => {
     expect(studio).toContain('id="product-image-upload" type="file" accept="image/jpeg,image/png,image/webp"');
     expect(studio).not.toContain('id="product-image-upload" type="file" accept="image/jpeg,image/png,image/webp" capture=');
   });
+
+  it("shows a French success toast after a valid product image is selected", () => {
+    const studio = readProjectFile("client/src/pages/Studio.tsx");
+    expect(studio).toContain('import { toast } from "sonner";');
+    expect(studio).toContain('toast.success("Image ajoutée"');
+    expect(studio).toContain("Votre image produit a été sélectionnée avec succès.");
+  });
 });
 

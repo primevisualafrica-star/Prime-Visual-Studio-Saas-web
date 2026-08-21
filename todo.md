@@ -6826,3 +6826,9 @@
 - [x] Make the mobile back icon in the creative workspace return to the main landing page.
 - [x] Preserve accessible labeling and add a navigation regression test.
 - [x] Validate responsive back navigation, run tests/typecheck/build, and publish the update.
+
+## Mobile upload success notification — follow-up
+
+- [x] Show a French success toast after a valid image is selected from the mobile gallery.
+- [x] Preserve validation errors and continue to the product-details step after the toast.
+- [x] Add upload-feedback regression coverage, run tests/typecheck/build, and publish the update.
