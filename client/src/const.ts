@@ -67,6 +67,9 @@ export const startSignup = async (providedEmail?: string, providedPassword?: str
     const normalized = normalizeAuthError(error.message);
     return normalized.message === error.message ? { ok: false, message: `Création du compte impossible : ${error.message}` } : normalized;
   }
+  if (data.user && Array.isArray(data.user.identities) && data.user.identities.length === 0) {
+    return { ok: false, message: "Cette adresse possède déjà un compte. Utilisez « Se connecter » avec votre mot de passe, ou « Mot de passe oublié ? » si nécessaire." };
+  }
   if (!data.session) {
     return { ok: true, retryAfterSeconds: DEFAULT_AUTH_RETRY_SECONDS, message: "La demande de confirmation a été acceptée. Vérifiez la boîte de réception et les dossiers spam/promotions. Si cette adresse possède déjà un compte, aucun nouveau lien ne sera forcément renvoyé ; utilisez alors « Se connecter » ou « Mot de passe oublié ? »." };
   }

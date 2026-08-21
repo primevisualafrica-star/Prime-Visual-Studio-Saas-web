@@ -23,12 +23,25 @@ describe("Supabase confirmation-link flow", () => {
     expect(callbackSource).toContain('url.searchParams.get("error")');
   });
 
+  it("explicitly exchanges confirmation codes and waits for a signed-in session", () => {
+    expect(callbackSource).toContain("exchangeCodeForSession(code)");
+    expect(callbackSource).toContain("client.auth.getSession()");
+    expect(callbackSource).toContain('event === "SIGNED_IN"');
+    expect(callbackSource).toContain("Votre profil est maintenant disponible");
+  });
+
   it("cleans callback credentials and returns non-root callbacks to the landing page", () => {
     expect(callbackSource).toContain('url.search = ""');
     expect(callbackSource).toContain('url.hash = ""');
     expect(callbackSource).toContain('window.location.replace("/")');
     expect(callbackSource).toContain("Connexion confirmée");
     expect(callbackSource).toContain("invalide ou a expiré");
+  });
+
+  it("does not restart signup for an address Supabase identifies as already registered", () => {
+    expect(constSource).toContain("data.user.identities");
+    expect(constSource).toContain("Cette adresse possède déjà un compte");
+    expect(constSource).toContain("Utilisez « Se connecter »");
   });
 
   it("sends both login and recovery links back to the site origin", () => {

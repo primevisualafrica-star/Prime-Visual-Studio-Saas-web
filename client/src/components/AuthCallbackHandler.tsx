@@ -36,8 +36,18 @@ export default function AuthCallbackHandler() {
     if (!hasAuthCallbackParams(initialUrl)) return;
 
     let redirected = false;
+    let finishing = false;
     const finish = async () => {
-      const { data, error } = await client.auth.getSession();
+      if (redirected || finishing) return;
+      finishing = true;
+
+      const code = initialUrl.searchParams.get("code");
+      const exchanged = code ? await client.auth.exchangeCodeForSession(code) : null;
+      const { data, error } = exchanged?.error
+        ? { data: { session: null }, error: exchanged.error }
+        : await client.auth.getSession();
+
+      finishing = false;
       if (redirected) return;
 
       if (error || initialUrl.searchParams.get("error") || initialUrl.hash.includes("error")) {
@@ -55,13 +65,13 @@ export default function AuthCallbackHandler() {
         return;
       }
       window.history.replaceState({}, document.title, cleanUrl.pathname);
-      toast.success("Connexion confirmée. Bienvenue sur Prime Visual Africa.");
+      toast.success("Connexion confirmée. Votre profil est maintenant disponible.");
     };
 
-    void finish();
-    const { data: listener } = client.auth.onAuthStateChange((event) => {
-      if (event === "SIGNED_IN" || event === "PASSWORD_RECOVERY") void finish();
+    const { data: listener } = client.auth.onAuthStateChange((event, session) => {
+      if (session && (event === "SIGNED_IN" || event === "PASSWORD_RECOVERY")) void finish();
     });
+    void finish();
 
     return () => listener.subscription.unsubscribe();
   }, []);

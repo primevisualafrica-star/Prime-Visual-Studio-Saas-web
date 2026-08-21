@@ -1,6 +1,6 @@
 import React from "react";
 import "@testing-library/jest-dom/vitest";
-import { cleanup, fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { cleanup, fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import Home from "./pages/Home";
 
@@ -36,16 +36,17 @@ describe("landing page button interactions", () => {
   beforeEach(() => vi.clearAllMocks());
 
   async function submitAuthDialog(mode: "login" | "recovery" = "login") {
-    fireEvent.change(screen.getByLabelText(/adresse e-mail/i), {
+    const dialog = within(screen.getByRole("dialog"));
+    fireEvent.change(dialog.getByLabelText(/adresse e-mail/i), {
       target: { value: "client@example.com" },
     });
     if (mode === "login") {
-      fireEvent.change(screen.getByLabelText(/mot de passe/i), {
+      fireEvent.change(dialog.getByLabelText("Mot de passe", { exact: true }), {
         target: { value: "password123" },
       });
-      fireEvent.click(screen.getByRole("button", { name: /se connecter/i }));
+      fireEvent.click(dialog.getByRole("button", { name: /se connecter/i }));
     } else {
-      fireEvent.click(screen.getByRole("button", { name: /envoyer le lien/i }));
+      fireEvent.click(dialog.getByRole("button", { name: /envoyer le lien/i }));
     }
   }
 
