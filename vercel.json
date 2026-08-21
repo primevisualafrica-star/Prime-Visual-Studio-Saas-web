@@ -3,6 +3,9 @@
   "installCommand": "pnpm install --frozen-lockfile",
   "buildCommand": "pnpm build",
   "outputDirectory": "dist/public",
-  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+  "rewrites": [
+    { "source": "/manus-storage/:path*", "destination": "/api/manus-storage/:path*" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
 }
 

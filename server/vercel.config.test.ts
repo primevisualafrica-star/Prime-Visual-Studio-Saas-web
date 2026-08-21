@@ -10,7 +10,10 @@ describe("Vercel deployment configuration", () => {
 
     expect(config.buildCommand).toBe("pnpm build");
     expect(config.outputDirectory).toBe("dist/public");
-    expect(config.rewrites).toEqual([{ source: "/(.*)", destination: "/index.html" }]);
+    expect(config.rewrites).toEqual([
+      { source: "/manus-storage/:path*", destination: "/api/manus-storage/:path*" },
+      { source: "/(.*)", destination: "/index.html" },
+    ]);
   });
 
   it("keeps the Vercel entry HTML free of unresolved analytics placeholders", () => {

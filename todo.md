@@ -6703,3 +6703,46 @@
 - [ ] Retest one real authenticated generation with a newly uploaded image in production.
 
 *Source: user reports that image generation does not work.*
+
+## Vercel deployment refresh — current request
+
+- [x] Inspect the latest GitHub commit and Vercel deployment record.
+- [x] Confirm that Vercel has deployed the current validated version.
+- [x] Verify the live production URL and report the result.
+
+*Source: user requests another Vercel deployment update.*
+
+## Vercel non-response incident — current request
+
+- [x] Inspect the live Vercel HTTP response, deployment status, build output, runtime logs, and SPA/API routing.
+- [x] Apply the smallest correction needed to restore the deployment.
+- [x] Validate the root page, protected route fallback, and relevant API response in production.
+- [x] Publish or confirm the corrected deployment and report the verified URL/status.
+
+*Source: user reports that the Vercel deployment is still not responding.*
+
+## Public Vercel generation test — current request
+
+- [ ] Open the canonical public Vercel URL and verify the landing page and navigation.
+- [ ] Authenticate with the user’s confirmed account if needed and open `/create`.
+- [ ] Upload a newly selected product image and run one real generation.
+- [ ] Verify the generated result, error state, and credit behavior, then report the outcome without claiming success if the user-dependent step cannot be completed.
+
+*Source: user requests a production test of image generation on the public URL.*
+
+## Public Vercel responsiveness issue — current request
+
+- [ ] Measure root-page, asset, SPA route, and API response times on the canonical public Vercel domain.
+- [ ] Inspect browser console/runtime failures and Vercel deployment/runtime evidence.
+- [ ] Apply the smallest correction if the issue is caused by the application or deployment configuration.
+- [ ] Validate public responsiveness and document any remaining generation test that requires the user’s authenticated browser session.
+
+*Source: user reports that the public Vercel site is still slow or not working.*
+
+## Vercel Studio API routing diagnosis
+
+- [x] Expose the existing tRPC/Express backend through a Vercel serverless API entrypoint while preserving the same routers, storage proxy, and Supabase auth context.
+- [x] Change Vercel rewrites so `/api/trpc/*` is not rewritten to the SPA shell.
+- [x] Validate the public Vercel Studio query path and publish the correction.
+
+*Finding: the Vercel deployment is static-only; `/api/trpc/*` currently returns the SPA HTML with HTTP 200, leaving the authenticated Studio on skeleton loading.*
