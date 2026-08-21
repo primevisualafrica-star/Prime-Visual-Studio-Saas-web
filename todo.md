@@ -6791,3 +6791,12 @@
 - [x] Restart and verify the Manus preview, then run regression checks and publish the configuration fix.
 
 *Source: user reports Vite cannot connect to the WebSocket on `/create?from_webdev=1`.*
+
+## Vercel gallery broken thumbnail — current request
+
+- [x] Verify the broken gallery image URL and HTTP response on the canonical Vercel domain.
+- [x] Fix the Vercel-to-Manus media URL or storage-proxy path used by gallery thumbnails.
+- [x] Add a production-safe broken-image fallback and regression coverage.
+- [x] Validate the gallery card on Vercel mobile/desktop, then publish the correction.
+
+*Source: user confirms the broken image is from the Vercel site.*
