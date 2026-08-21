@@ -4,14 +4,18 @@ import { resolve } from "node:path";
 
 describe("Vercel API entrypoint", () => {
   it("mounts the existing tRPC router and storage proxy", () => {
-    const source = readFileSync(resolve(import.meta.dirname, "../api/[...path].ts"), "utf8");
+    const handler = readFileSync(resolve(import.meta.dirname, "./vercelHandler.ts"), "utf8");
+    const catchAll = readFileSync(resolve(import.meta.dirname, "../api/[...path].ts"), "utf8");
+    const explicit = readFileSync(resolve(import.meta.dirname, "../api/index.ts"), "utf8");
 
-    expect(source).toContain('createExpressMiddleware({');
-    expect(source).toContain('router: appRouter,');
-    expect(source).toContain('createContext,');
-    expect(source).toContain('instance.use("/api/trpc", trpcMiddleware);');
-    expect(source).toContain('instance.use("/trpc", trpcMiddleware);');
-    expect(source).toContain("registerStorageProxy(instance)");
-    expect(source).toContain("/api/manus-storage/");
+    expect(handler).toContain('createExpressMiddleware({');
+    expect(handler).toContain('router: appRouter,');
+    expect(handler).toContain('createContext,');
+    expect(handler).toContain('instance.use("/api/trpc", trpcMiddleware);');
+    expect(handler).toContain('instance.use("/trpc", trpcMiddleware);');
+    expect(handler).toContain("registerStorageProxy(instance)");
+    expect(handler).toContain("/api/manus-storage/");
+    expect(catchAll).toContain('vercelHandler');
+    expect(explicit).toContain('vercelHandler');
   });
 });
