@@ -4,6 +4,7 @@ import { appRouter } from "./routers";
 import { createContext } from "./_core/context";
 import { registerOAuthRoutes } from "./_core/oauth";
 import { registerStorageProxy } from "./_core/storageProxy";
+import { applyCorsHeaders } from "./_core/cors";
 
 let app: express.Express | undefined;
 let trpcApp: express.Express | undefined;
@@ -11,6 +12,14 @@ let storageApp: express.Express | undefined;
 
 function createJsonApp() {
   const instance = express();
+  instance.use((req, res, next) => {
+    applyCorsHeaders(req, res);
+    if (req.method === "OPTIONS") {
+      res.status(204).end();
+      return;
+    }
+    next();
+  });
   instance.use(express.json({ limit: "50mb" }));
   instance.use(express.urlencoded({ limit: "50mb", extended: true }));
   return instance;

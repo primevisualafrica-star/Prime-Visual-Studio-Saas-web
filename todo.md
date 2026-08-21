@@ -6755,3 +6755,13 @@
 - [ ] Sync the correction to GitHub and verify the refreshed Vercel endpoint.
 
 *Source: deployed API function existed but returned 404 because Vercel normalized the catch-all function path.*
+
+## Vercel-to-Manus API fallback — current correction
+
+- [x] Route Vercel-hosted tRPC requests to the existing Manus backend when same-origin Vercel functions are unavailable.
+- [x] Add a restricted CORS policy for the canonical Vercel origin, Manus origin, local development, and preview hosts.
+- [x] Add API-origin and CORS regression tests; focused validation passes with 4 files / 6 tests, TypeScript, and production build.
+- [ ] Push the correction and refresh Vercel production.
+- [ ] Retest authenticated `/create` and one real generation on the public Vercel URL.
+
+*Source: production `/create` remained on a skeleton because Vercel’s static deployment returned HTML for `/api/trpc`; the frontend now uses the existing Manus backend as its Vercel fallback.*

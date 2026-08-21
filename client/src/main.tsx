@@ -8,6 +8,7 @@ import App from "./App";
 import { supabase } from "@/lib/supabase";
 import { startLogin } from "./const";
 import { installGlobalErrorMonitoring } from "@/lib/errorMonitoring";
+import { getApiBaseUrl } from "@/lib/apiOrigin";
 import "./index.css";
 
 const queryClient = new QueryClient();
@@ -42,7 +43,7 @@ queryClient.getMutationCache().subscribe(event => {
 const trpcClient = trpc.createClient({
   links: [
     httpBatchLink({
-      url: "/api/trpc",
+      url: getApiBaseUrl(),
       transformer: superjson,
       async headers() {
         if (supabase) {
