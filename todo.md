@@ -6783,3 +6783,11 @@
 - [ ] Publish and verify the previous generated images in the live user gallery with the authenticated account.
 
 *Source: user reports that previously generated images are not shown in the gallery.*
+
+## Vite HMR WebSocket failure — current request
+
+- [x] Inspect Vite server/HMR configuration and development preview logs.
+- [x] Add proxy-aware HMR host/protocol settings without changing production behavior.
+- [x] Restart and verify the Manus preview, then run regression checks and publish the configuration fix.
+
+*Source: user reports Vite cannot connect to the WebSocket on `/create?from_webdev=1`.*

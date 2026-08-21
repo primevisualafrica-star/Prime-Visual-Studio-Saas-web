@@ -182,6 +182,12 @@ export default defineConfig({
       "localhost",
       "127.0.0.1",
     ],
+    // The Manus preview reverse-proxies the Vite server behind the public HTTPS
+    // origin. Keep the public client port while letting Vite choose ws/wss from
+    // the page protocol, so the browser never attempts localhost:5173 directly.
+    hmr: {
+      clientPort: Number(process.env.VITE_HMR_CLIENT_PORT ?? 443),
+    },
     fs: {
       strict: true,
       deny: ["**/.*"],
