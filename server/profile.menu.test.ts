@@ -23,12 +23,13 @@ describe("authenticated profile dropdown", () => {
     expect(menu).toContain("void logout()");
   });
 
-  it("provides an accessible persistent previous-page control in the internal header", () => {
+  it("provides an accessible persistent landing-page control in the internal header", () => {
     const layout = readProjectFile("client/src/components/DashboardLayout.tsx");
     expect(layout).toContain("ArrowLeft");
-    expect(layout).toContain('aria-label="Retour à la page précédente"');
+    expect(layout).toContain('aria-label="Retour à la page d’accueil"');
+    expect(layout).toContain('title="Retour à la page d’accueil"');
     expect(layout).toContain("sticky top-0 z-40");
-    expect(layout).toContain("window.history.back()");
-    expect(layout).toContain('setLocation("/dashboard")');
+    expect(layout).toContain('setLocation("/")');
+    expect(layout).not.toContain("window.history.back()");
   });
 });

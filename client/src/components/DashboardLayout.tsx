@@ -120,11 +120,7 @@ function DashboardLayoutContent({
   const isMobile = useIsMobile();
 
   const goBack = () => {
-    if (typeof window !== "undefined" && window.history.length > 1) {
-      window.history.back();
-      return;
-    }
-    setLocation("/dashboard");
+    setLocation("/");
   };
 
   useEffect(() => {
@@ -262,8 +258,8 @@ function DashboardLayoutContent({
             <button
               type="button"
               onClick={goBack}
-              aria-label="Retour à la page précédente"
-              title="Retour à la page précédente"
+              aria-label="Retour à la page d’accueil"
+              title="Retour à la page d’accueil"
               className="grid h-10 w-10 place-items-center rounded-xl bg-background text-foreground transition-colors hover:bg-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
               <ArrowLeft className="h-4 w-4" aria-hidden="true" />

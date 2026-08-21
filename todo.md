@@ -6820,3 +6820,9 @@
 - [x] Make the primary mobile upload action open the phone photo gallery directly.
 - [x] Preserve desktop file-picker behavior and add upload interaction regression coverage.
 - [x] Validate mobile upload selection, run tests/typecheck/build, and publish the update.
+
+## Creative workspace back navigation — follow-up
+
+- [x] Make the mobile back icon in the creative workspace return to the main landing page.
+- [x] Preserve accessible labeling and add a navigation regression test.
+- [x] Validate responsive back navigation, run tests/typecheck/build, and publish the update.
