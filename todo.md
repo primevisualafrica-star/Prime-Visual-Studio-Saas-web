@@ -6765,3 +6765,21 @@
 - [ ] Retest authenticated `/create` and one real generation on the public Vercel URL.
 
 *Source: production `/create` remained on a skeleton because Vercel’s static deployment returned HTML for `/api/trpc`; the frontend now uses the existing Manus backend as its Vercel fallback.*
+
+## User gallery persistence — current request
+
+- [ ] Audit the authenticated gallery query, generation persistence, ownership filtering, and image URL resolution.
+- [ ] Ensure previously generated images are returned and rendered after navigation and refresh.
+- [ ] Add regression coverage for gallery retrieval, empty/loading/error states, and stored generated URLs.
+- [ ] Run tests, typecheck, build, publish, and verify the live gallery with the user’s account.
+
+*Source: user reports that previously generated images do not appear in the user gallery.*
+
+## User gallery media-origin correction — current release
+
+- [x] Resolve stored `/manus-storage/*` paths to the Manus backend when the gallery is viewed on Vercel.
+- [x] Apply the resolver to gallery thumbnails, details, downloads, and newly generated result formats.
+- [x] Add media URL regression coverage; full suite passes with 26 test files / 60 tests, TypeScript, and production build.
+- [ ] Publish and verify the previous generated images in the live user gallery with the authenticated account.
+
+*Source: user reports that previously generated images are not shown in the gallery.*
