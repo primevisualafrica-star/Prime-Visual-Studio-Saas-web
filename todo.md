@@ -6677,3 +6677,11 @@
 - [x] Add regression coverage, run tests/typecheck/build, and publish the correction.
 
 *Source: user reports that a signed-in user is asked to sign in again when clicking « Créer mon premier visuel ».*
+
+## GitHub synchronization — current request
+
+- [ ] Inspect the local branch, remote, and latest validated commit.
+- [ ] Commit and push the latest update to `primevisualafrica-star/Prime-Visual-Studio-Saas-web`.
+- [ ] Verify the remote branch and commit after pushing.
+
+*Source: user requests the latest update be pushed to the GitHub repository.*
