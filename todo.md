@@ -6840,3 +6840,9 @@
 - [x] Make FREE credits reset 24 hours after the quota window starts or is exhausted, with the next reset visible to the user.
 - [x] Add a responsive accessible waiting-list modal for STARTER and BUSINESS plan buttons.
 - [x] Add regression tests, apply the schema safely, run typecheck/build, and publish the update.
+
+## Paid-plan waitlist success modal — follow-up
+
+- [x] Show a dedicated French success modal after a STARTER or BUSINESS waitlist registration succeeds.
+- [x] Include a clear thank-you message, selected plan confirmation, and accessible close action.
+- [x] Add regression coverage, run tests/typecheck/build, and publish the update.
