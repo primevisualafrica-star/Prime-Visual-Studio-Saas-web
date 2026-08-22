@@ -6846,3 +6846,11 @@
 - [x] Show a dedicated French success modal after a STARTER or BUSINESS waitlist registration succeeds.
 - [x] Include a clear thank-you message, selected plan confirmation, and accessible close action.
 - [x] Add regression coverage, run tests/typecheck/build, and publish the update.
+
+## Paid-plan popup copy and daily FREE wording — follow-up
+
+- [x] Replace the paid-plan popup with an informational waiting-list form explaining that users must wait and will receive an email when payment becomes available.
+- [x] Keep only Name and Email fields in the paid-plan form and change the CTA text to Submit.
+- [x] Ensure no paid-plan popup action says Se connecter.
+- [x] Change the FREE plan pricing copy from monthly wording to 5 générations / Jour without changing its existing behavior.
+- [x] Add/update regression coverage, validate responsive behavior, and publish the update.

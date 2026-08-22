@@ -26,12 +26,14 @@ describe("subscription waitlist and rolling free quota", () => {
 
   it("describes FREE credits as resetting every 24 hours", () => {
     const studio = projectFile("client/src/pages/Studio.tsx");
-    expect(studio).toContain("5 générations toutes les 24 h");
+    expect(studio).toContain("5 générations / Jour");
     expect(studio).toContain("Prochain renouvellement");
     expect(studio).toContain("Merci pour votre inscription");
+    expect(studio).toContain("Vous recevrez un e-mail dès que votre plan sera disponible.");
+    expect(studio).toContain("Submit");
     expect(studio).toContain("Votre demande pour le plan {successPlan}");
     expect(studio).toContain('onClick={() => setSuccessPlan(null)}');
-    expect(projectFile("server/routers.ts")).toContain("5 générations toutes les 24 h");
+    expect(projectFile("server/routers.ts")).toContain("5 générations / Jour");
   });
 });
 
