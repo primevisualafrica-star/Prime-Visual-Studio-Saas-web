@@ -59,9 +59,19 @@ export const usage = mysqlTable("usage", {
   month: varchar("month", { length: 7 }).notNull(),
   generationsUsed: int("generationsUsed").default(0).notNull(),
   generationLimit: int("generationLimit").default(5).notNull(),
+  resetAt: timestamp("resetAt"),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
 }, (table) => ({ userMonthUnique: uniqueIndex("usage_user_month_unique").on(table.userId, table.month) }));
+
+export const subscriberWaitlist = mysqlTable("subscriber_waitlist", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId"),
+  name: varchar("name", { length: 160 }).notNull(),
+  email: varchar("email", { length: 320 }).notNull(),
+  plan: mysqlEnum("plan", ["STARTER", "BUSINESS"]).notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+}, (table) => ({ emailPlanIdx: index("subscriber_waitlist_email_plan_idx").on(table.email, table.plan) }));
 
 export type User = typeof users.$inferSelect;
 export type InsertUser = typeof users.$inferInsert;
@@ -69,3 +79,4 @@ export type Subscription = typeof subscriptions.$inferSelect;
 export type Template = typeof templates.$inferSelect;
 export type Generation = typeof generations.$inferSelect;
 export type Usage = typeof usage.$inferSelect;
+export type SubscriberWaitlist = typeof subscriberWaitlist.$inferSelect;

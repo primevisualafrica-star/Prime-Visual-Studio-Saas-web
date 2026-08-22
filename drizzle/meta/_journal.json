@@ -15,6 +15,13 @@
       "when": 1786531709775,
       "tag": "0001_gigantic_retro_girl",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1787398986734,
+      "tag": "0002_complete_punisher",
+      "breakpoints": true
     }
   ]
 }

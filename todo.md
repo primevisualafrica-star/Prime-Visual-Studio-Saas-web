@@ -6832,3 +6832,11 @@
 - [x] Show a French success toast after a valid image is selected from the mobile gallery.
 - [x] Preserve validation errors and continue to the product-details step after the toast.
 - [x] Add upload-feedback regression coverage, run tests/typecheck/build, and publish the update.
+
+## Rolling FREE quota and paid-plan waiting list — follow-up
+
+- [x] Audit the current usage reset logic, subscription schema, and pricing interactions.
+- [x] Add a secure paid-plan waiting-list data model and server procedure for name, email, and selected plan.
+- [x] Make FREE credits reset 24 hours after the quota window starts or is exhausted, with the next reset visible to the user.
+- [x] Add a responsive accessible waiting-list modal for STARTER and BUSINESS plan buttons.
+- [x] Add regression tests, apply the schema safely, run typecheck/build, and publish the update.
