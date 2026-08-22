@@ -6854,3 +6854,10 @@
 - [x] Ensure no paid-plan popup action says Se connecter.
 - [x] Change the FREE plan pricing copy from monthly wording to 5 générations / Jour without changing its existing behavior.
 - [x] Add/update regression coverage, validate responsive behavior, and publish the update.
+
+## Paid-plan popup exact-form correction — follow-up
+
+- [ ] Confirm the deployed paid-plan button opens the intended waitlist form rather than an old login/payment form.
+- [ ] Make the popup contain only explanatory waitlist text plus Name and Email fields and a submission action.
+- [ ] Remove any paid-plan login wording, payment action, and unrelated form controls.
+- [ ] Add regression coverage, verify the deployed flow, and publish the correction.
